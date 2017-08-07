@@ -26,7 +26,7 @@ Just remember that it's supposed to intuitive and that alexa needs to understand
 
 After getting thru the communication part, the skill itself is pretty simple,<br/>
 It has only one major intent called StartAction and that intent has only one custom type slot called Action.<br/>
-The custom type for the slot is called LIST_OF_ACTIONS and it is actually a list for all the actions you're going to ask alexa to perform.
+The custom type for the slot is called *LIST_OF_ACTIONS* and it is actually a list for all the actions you're going to ask alexa to perform.
 
 The skill grabs the Action slot value and in a Key-Value fashion retrieves the necessary action to perform from a designated json file called *action_map.json*.<br/>
 The skill then tries to open the value retrieved as a File, and if it fails it tries to open is as a Uri,<br/>
@@ -35,16 +35,16 @@ Think of the json file like mappings file, you match an "what-to-do" to any "act
 
 **Example 1: Alexa, ask computer to start excel.<br/>**
 For that purpose, we will:<br/>
-1- add **excel** to the LIST_OF_ACTIONS and save our skill interface.<br/>
-Which means we can now ask alexa to open excel.
+1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
+Which means we can now ask alexa to tell our skill to open excel.
 
 2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *action_map.json* file.<br/>
-Which means that for every time we ask alexa to start excel, the skill will open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
+Which means that for every time the skill receives the action named excel, the skill will open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
 
 **Example 2: Alexa, ask computer to open facebook.<br/>**
 For that purpose, we will:<br/>
-1- add **facebook** to the LIST_OF_ACTIONS and save our skill interface.<br/>
-Which means we can now ask alexa to open facebook.
+1- add **facebook** to the *LIST_OF_ACTIONS* custom slot ype and save our skill interface.<br/>
+Which means we can now ask alexa to tell our skill to open facebook.
 
 2- add the line **"facebook": "https://www.facebook.com/"** to our *action_map.json* file.<br/>
-Which means that for every time we ask alexa to open facebook, the skill will open https://www.facebook.com/ with our default web browser.
+Which means that for every time the skill receives the action named facebook, the skill will open https://www.facebook.com/ with our default web browser.
