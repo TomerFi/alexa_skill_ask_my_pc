@@ -4,13 +4,16 @@ You can check out the skill in action at my youtube channel [here](https://youtu
 
 ## Table Of Contents
 - [Basic Concept](#basic-concept)
+- [Setting up our environment](#setting-up-our-environment)
 - [Example setting of the skill](#example-setting-of-the-skill)
+  - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
+  - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
 
 
 ### Basic Concept
-This is just a concept section, I will go thru all the steps as clearly as I can in the steps section.
+This is just a concept section, I will go thru all the steps as clearly as I can in the following sections.
 
-The skill runs as a Java Servlet on a local computer running a Tomcat web server,<br/>
+The basic concept is a skill running as a Java Servlet on a local computer running a Tomcat web server,<br/>
 Which means the local computer is the Endpoint for the alexa skill.<br/>
 According to Amazon's demands regarding using a different Endpoint then lambda,<br/>
 The Tomcat server must accept communication using Https protocol with the default port of 443,<br/>
@@ -39,8 +42,12 @@ The skill then tries to open the value retrieved as a File, and if it fails it t
 Which means the value retrieved can by either a file or an http address to open in your default browser.<br/>
 Think of the json file like mappings file, you match an "what-to-do" to any "action" you're going to ask alexa to perform.
 
+### Setting up our environment
+In this section I'll try to elaborate as much as I can,<br/>
+If you're familliar with some of the actions described here, feel free to jump to next part.
+
 ### Example setting of the skill
-**Example 1: Alexa, ask computer to start excel.<br/>**
+#### Example 1: Alexa ask computer to start excel
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
 Which means we can now ask alexa to tell our skill to open excel.
@@ -48,7 +55,7 @@ Which means we can now ask alexa to tell our skill to open excel.
 2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *action_map.json* file.<br/>
 Which means that for every time the skill receives the action named excel, the skill will then open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
 
-**Example 2: Alexa, ask computer to open facebook.<br/>**
+#### Example 2: Alexa ask computer to open facebook
 For that purpose, we will:<br/>
 1- add **facebook** to the *LIST_OF_ACTIONS* custom slot ype and save our skill interface.<br/>
 Which means we can now ask alexa to tell our skill to open facebook.
