@@ -5,7 +5,9 @@ You can check out the skill in action at my youtube channel [here](https://youtu
 ## Table Of Contents
 - [Basic Concept](#basic-concept)
 - [Setting up our environment](#setting-up-our-environment)
-- [Example setting of the skill](#example-setting-of-the-skill)
+  - [Prerequisites](#prerequisites)
+    - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
+- [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
 
@@ -28,7 +30,7 @@ The Alexa Skill Kit for Java handles all of those demands for us.
 
 The skill interface is configured for and Https Endpoint,<br/>
 So, if you don't want to update the skill interface with the new ip address of your modem every time your isp changes it,<br/>
-Then I would recommend using a dynamic dns service in the sorts of NO-IP and use the updates app to update your modem address in the NO-IP servers.
+Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in the NO-IP servers.
 
 The skill's invocation word is Computer, but you can use whatever invocation word or phrase you want,<br/>
 Just remember that it's supposed to intuitive and that alexa needs to understand you.
@@ -45,8 +47,12 @@ Think of the json file like mappings file, you match an "what-to-do" to any "act
 ### Setting up our environment
 In this section I'll try to elaborate as much as I can,<br/>
 If you're familliar with some of the actions described here, feel free to jump to next part.
+#### Prerequisites
+##### Getting a static dns name from NOIP
+Create and account with https://www.noip.com/ and create a hostname to be used as a static name to access out web server.<br/>
+Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address recived from your isp periodicly.
 
-### Example setting of the skill
+### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
