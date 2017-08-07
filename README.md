@@ -11,6 +11,8 @@ You can check out the skill in action at my youtube channel [here](https://youtu
     - [Installing Java Development Kit (JDK)](#installing-java-development-kit-jdk)
     - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
+  - [Configuring](#configuring)
+    - [Setting a static ip for our computer](Setting-a-static-ip-for-our-computer)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -87,17 +89,17 @@ If so, a computer reboot might be helpful here.
 #### Installing Apache Maven
 [Maven](https://maven.apache.org) is a tool used for project managment, I've used it working on this project, which means we need in order to build the project eventually.<br/>
 You can download the version I've used, 3.5.0 [here](https://maven.apache.org/download.cgi), this if of course a binary ditribution.<br/>
-Unzip it in any folder you see fit, and in the same manner when we've installed the JDK, get to the system enviorment variables screen.<br/>
+Unzip it in any folder you see fit, and in the same manner when we've installed the JDK, get yourself to the system enviorment variables screen.<br/>
 Add the following 3 variables in "System variables" section:<br/>
 Variable name: *M2_HOME*<br/>
-Variable value: the folder you've extracted from thz zip file, in my case its *E:\dev_tools\apache-maven-3.5.0*<br/>
+Variable value: the folder you've extracted from the zip file, in my case its *E:\dev_tools\apache-maven-3.5.0*<br/>
 Variable name: *MAVEN_OPTS*<br/>
 Variable value: *-Xms256m -Xmx512m*<br/>
 Variable name: *M2*<br/>
 Variable value: *%M2_HOME%\bin*<br/>
-Now we need to add to an existing variable, of course in the "System variables" section (if it doesnt exits, create it):<br/>
+Now we need to add to add a value into an existing variable, of course in the "System variables" section (if it doesnt exits, create it):<br/>
 Variable name: *Path*<br/>
-Value to add" *%M2%*<br/>
+Value to add: *%M2%*<br/>
 **Importent note:**<br/>
 If you're using Windows 10, the editing variables interface is very easy, just click "New" while you're inside the *Path* variable,<br/>
 If you're working with an older version of Windows or you're editing the variable value in text mode, just go to the end of the current text and add *;* as a sperator before adding *%M2%*.<br/>
@@ -110,7 +112,22 @@ If so, a computer reboot might be helpful here.
 #### Installing Apache Tomcat
 For a web server for hosting this skill, I've used [Apache Tomcat](https://tomcat.apache.org) 9.0.0.M22.<br/>
 I've used the binary distribution, but you can also deploy it as a windows service.<br/>
-You can download the core binary distribution [here](https://tomcat.apache.org), there is no installation involved when using the binary distribution, just open the downloaded zip file on any folder you see fit, just remmber that we're going to use this folder later on.
+You can download the core binary distribution [here](https://tomcat.apache.org), there is no installation involved when using the binary distribution, just open the downloaded zip file on any folder you see fit, just remember that we're going to use this folder later on.<br/>
+Now, in the same manner when we've installed the JDK and Maven, get yourself to the system enviorment variables screen.<br/>
+In the "System variables" section we're going to add the following variable:<br/>
+Variable name: *CATALINA_HOME*
+Variable value: the folder you've extracted from the zip file, in my case its *E:\dev_tools\apache-tomcat-9.0.0.M20*<br/>
+We'll get back to configuring Tomcat later.
+
+### Configuring
+#### Setting a static ip for our computer
+This part you're going to have to on your own, because I can tell you how to it if you use a TP-Ling AC1750 router, which is what i use.<br/>
+But if you use a diffrent router, well, you're going to have to do this part on your own.<br/>
+But don't worry, I'll give you the guidlines.<br/>
+First of all, open up a Command Prompt windows and type *ipconfig /all*, identify your ethernet adapter and take note of the following:<br/>
+Physical Address - is the mac address you're going to assign the static ip to on your router.<br/>
+IPv4 Address - is the ip you're going to assign to the mac address on your router.<br/>
+Default Gateway - is the ip address of your router, from your router's gui you will configure the static ip.<br/>
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
