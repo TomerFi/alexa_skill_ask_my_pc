@@ -8,6 +8,8 @@ You can check out the skill in action at my youtube channel [here](https://youtu
   - [Prerequisites](#prerequisites)
     - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
     - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
+    - [Installing Java Development Kit (JDK)](#installing-java-development-kit-jdk)
+    - [Installing Apache Tomcat](#installing-apache-tomcat)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -61,7 +63,25 @@ I had now prior knowledge of creating or even using certificates before working 
 There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
 But evnetually I found a way.<br/>
 There are a couple of diffrent ways creating this certificate, maybe mine is not the oprimal one, but it works.<br/>
-Lets get started:<br/>
+Lets get started.<br/>
+- [ ] under construction
+
+#### Installing Java Development Kit (JDK)
+In order to be able to build and the project, you're going to need to intall Java JDK, I've used version 8.<br/>
+You can find the correct distribution for your operating system [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), just download and install.<br/>
+After we've finished installing JDK, we now need to add a couple of enviorment variables which will make it easy for us to use Java.<br/>.
+You can either search windows (if you have windows 10) for the phrase "Edit the system environment variables",<br/>
+or just right-click on This Pc/My Computer >> choose "Advanced system setting" >> and got into the "Advanced" Tab.<br/>
+Now click on "Enviorment Variables...", our focus will be on the "System variables".<br/>
+Click "New..." and the following variable:<br/>
+Variable name: *JAVA_HOME*
+Variable value: *C:\Program Files\Java\jdk1.8.0_121*<br/>
+If you've installed java in a diffrent path or you've installed a diffrent version, updated this variable value accoradingly.<br/>
+
+#### Installing Apache Tomcat
+For a web server for hosting this skill, I've used Apache Tomcat 9.0.0.M22 https://tomcat.apache.org.<br/>
+I've used the binary distribution, but you can also deploy it as a windows service.<br/>
+You can download the core binary distribution [here](https://tomcat.apache.org), there is no installation involved when using the binary distribution, just open the downloaded zip file on any folder you see fit, just remmber that we're going to use this folder later on.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
