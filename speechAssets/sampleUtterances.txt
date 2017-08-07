@@ -1,0 +1,4 @@
+StartAction {Action}
+StartAction yes {Action}
+StartAction open {Action}
+StartAction start {Action}
