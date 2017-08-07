@@ -7,9 +7,11 @@ You can check out the skill in action at my youtube channel [here](https://youtu
 - [Setting up our environment](#setting-up-our-environment)
   - [Prerequisites](#prerequisites)
     - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
+    - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
+- [Logs](#logs)
 
 
 ### Basic Concept
@@ -50,7 +52,16 @@ If you're familliar with some of the actions described here, feel free to jump t
 #### Prerequisites
 ##### Getting a static dns name from NOIP
 Create and account with https://www.noip.com/ and create a hostname to be used as a static name to access out web server.<br/>
-Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address recived from your isp periodicly.
+Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address recived from your isp periodicly.<br/>
+Write down your chosen dns name, we will use it very soon.
+
+#### Creating a self-signed certificate
+Well, this part was actually the most fustrating part for me.<br/>
+I had now prior knowledge of creating or even using certificates before working on this project,<br/>
+There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
+But evnetually I found a way.<br/>
+There are a couple of diffrent ways creating this certificate, maybe mine is not the oprimal one, but it works.<br/>
+Lets get started:<br/>
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
@@ -68,3 +79,5 @@ Which means we can now ask alexa to tell our skill to open facebook.
 
 2- add the line **"facebook": "https://www.facebook.com/"** to our *action_map.json* file.<br/>
 Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
+
+### Logs
