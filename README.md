@@ -79,6 +79,10 @@ Click "New..." and the following variable:<br/>
 Variable name: *JAVA_HOME*<br/>
 Variable value: *C:\Program Files\Java\jdk1.8.0_121*<br/>
 If you've installed java in a diffrent path or you've installed a diffrent version, updated this variable value accoradingly.<br/>
+<br/>
+To check the install proccess, open a Command Prompt window and type *java -version* you should be getting the information about the installed Java softwere,<br/>
+If it's not - make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
+If so, a computer reboot might be helpful here.
 
 #### Installing Apache Maven
 [Maven](https://maven.apache.org) is a tool used for project managment, I've used it working on this project, which means we need in order to build the project eventually.<br/>
@@ -87,13 +91,10 @@ Unzip it in any folder you see fit, and in the same manner when we've installed 
 Add the following 3 variables in "System variables" section:<br/>
 Variable name: *M2_HOME*<br/>
 Variable value: the folder you've extracted from thz zip file, in my case its *E:\dev_tools\apache-maven-3.5.0*<br/>
-
 Variable name: *MAVEN_OPTS*<br/>
 Variable value: *-Xms256m -Xmx512m*<br/>
-
 Variable name: *M2*<br/>
 Variable value: *%M2_HOME%\bin*<br/>
-
 Now we need to add to an existing variable, of course in the "System variables" section (if it doesnt exits, create it):<br/>
 Variable name: *Path*<br/>
 Value to add" *%M2%*<br/>
