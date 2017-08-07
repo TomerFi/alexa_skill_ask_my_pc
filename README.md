@@ -29,10 +29,11 @@ It has only one major intent called StartAction and that intent has only one cus
 The custom type for the slot is called *LIST_OF_ACTIONS* and it is actually a list for all the actions you're going to ask alexa to perform.
 
 The skill grabs the Action slot value and in a Key-Value fashion retrieves the necessary action to perform from a designated json file called *action_map.json*.<br/>
-The skill then tries to open the value retrieved as a File, and if it fails it tries to open is as a Uri,<br/>
+The skill then tries to open the value retrieved as a File, and if it fails it tries to open it as a Uri,<br/>
 Which means the value retrieved can by either a file or an http address to open in your default browser.<br/>
 Think of the json file like mappings file, you match an "what-to-do" to any "action" you're going to ask alexa to perform.
 
+### Examples of using the skill
 **Example 1: Alexa, ask computer to start excel.<br/>**
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
