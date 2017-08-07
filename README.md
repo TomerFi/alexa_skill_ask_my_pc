@@ -9,6 +9,7 @@ You can check out the skill in action at my youtube channel [here](https://youtu
     - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
     - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
     - [Installing Java Development Kit (JDK)](#installing-java-development-kit-jdk)
+    - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
@@ -67,19 +68,42 @@ Lets get started.<br/>
 - [ ] under construction
 
 #### Installing Java Development Kit (JDK)
-In order to be able to build and the project, you're going to need to intall Java JDK, I've used version 8.<br/>
+In order to be able to build and the project we're going to use Maven.<br/>
+One of Maven's requirement is JDK. so, you're going to need to intall Java JDK, I've used version 8.<br/>
 You can find the correct distribution for your operating system [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), just download and install.<br/>
 After we've finished installing JDK, we now need to add a couple of enviorment variables which will make it easy for us to use Java.<br/>.
 You can either search windows (if you have windows 10) for the phrase "Edit the system environment variables",<br/>
 or just right-click on This Pc/My Computer >> choose "Advanced system setting" >> and got into the "Advanced" Tab.<br/>
 Now click on "Enviorment Variables...", our focus will be on the "System variables".<br/>
 Click "New..." and the following variable:<br/>
-Variable name: *JAVA_HOME*
+Variable name: *JAVA_HOME*<br/>
 Variable value: *C:\Program Files\Java\jdk1.8.0_121*<br/>
 If you've installed java in a diffrent path or you've installed a diffrent version, updated this variable value accoradingly.<br/>
 
+#### Installing Apache Maven
+[Maven](https://maven.apache.org) is a tool used for project managment, I've used it working on this project, which means we need in order to build the project eventually.<br/>
+You can download the version I've used, 3.5.0 [here](https://maven.apache.org/download.cgi), this if of course a binary ditribution.<br/>
+Unzip it in any folder you see fit, and in the same manner when we've installed the JDK, get to the system enviorment variables screen.<br/>
+Add the following 3 variables in "System variables" section:<br/>
+Variable name: *M2_HOME*<br/>
+Variable value: the folder you've extracted from thz zip file, in my case its *E:\dev_tools\apache-maven-3.5.0*<br/>
+
+Variable name: *MAVEN_OPTS*<br/>
+Variable value: *-Xms256m -Xmx512m*<br/>
+
+Variable name: *M2*<br/>
+Variable value: *%M2_HOME%\bin*<br/>
+
+Now we need to add to an existing variable, of course in the "System variables" section (if it doesnt exits, create it):<br/>
+Variable name: *Path*<br/>
+Value to add" *%M2%*<br/>
+**Importent note:**<br/>
+If you're using Windows 10, the editing variables interface is very easy, just click "New" while you're inside the *Path* variable,<br/>
+If you're working with an older version of Windows or you're editing the variable value in text mode, just go to the end of the current text and add *;* as a sperator before adding *%M2%*.<br/>
+**DO NOT**, under any circumstances delete or edit any existing text inside the value.
+
 #### Installing Apache Tomcat
-For a web server for hosting this skill, I've used Apache Tomcat 9.0.0.M22 https://tomcat.apache.org.<br/>
+For a web server for hosting this skill, I've used [Apache Tomcat](https://tomcat.apache.org) 9.0.0.M22.<br/>
 I've used the binary distribution, but you can also deploy it as a windows service.<br/>
 You can download the core binary distribution [here](https://tomcat.apache.org), there is no installation involved when using the binary distribution, just open the downloaded zip file on any folder you see fit, just remmber that we're going to use this folder later on.
 
