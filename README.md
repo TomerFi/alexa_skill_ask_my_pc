@@ -1,8 +1,13 @@
 # Alexa skill ask my pc<hr>
-Alexa java skill for opening files and shortcuts on a local computer running the skill with tomcat.
+Alexa java skill for opening files and web pages on a local computer running the skill with tomcat.
 You can check out the skill in action at my youtube channel [here](https://youtu.be/UMA1FSwb1pw).
 
-## Basic Concept
+## Table Of Contents
+- [Basic Concept](#basic-concept)
+- [Example setting of the skill](#example-setting-of-the-skill)
+
+
+### Basic Concept
 This is just a concept section, I will go thru all the steps as clearly as I can in the steps section.
 
 The skill runs as a Java Servlet on a local computer running a Tomcat web server,<br/>
