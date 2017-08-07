@@ -39,7 +39,7 @@ For that purpose, we will:<br/>
 Which means we can now ask alexa to tell our skill to open excel.
 
 2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *action_map.json* file.<br/>
-Which means that for every time the skill receives the action named excel, the skill will open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
+Which means that for every time the skill receives the action named excel, the skill will then open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
 
 **Example 2: Alexa, ask computer to open facebook.<br/>**
 For that purpose, we will:<br/>
@@ -47,4 +47,4 @@ For that purpose, we will:<br/>
 Which means we can now ask alexa to tell our skill to open facebook.
 
 2- add the line **"facebook": "https://www.facebook.com/"** to our *action_map.json* file.<br/>
-Which means that for every time the skill receives the action named facebook, the skill will open https://www.facebook.com/ with our default web browser.
+Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ with our default web browser.
