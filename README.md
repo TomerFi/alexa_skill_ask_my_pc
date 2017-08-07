@@ -80,8 +80,8 @@ Variable name: *JAVA_HOME*<br/>
 Variable value: *C:\Program Files\Java\jdk1.8.0_121*<br/>
 If you've installed java in a diffrent path or you've installed a diffrent version, updated this variable value accoradingly.<br/>
 <br/>
-To check the install proccess, open a Command Prompt window and type *java -version* you should be getting the information about the installed Java softwere,<br/>
-If it's not - make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
+To check the installation proccess, open a Command Prompt window and type *java -version* you should be getting the information about the installed Java softwere,<br/>
+If it's not working properly, make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
 If so, a computer reboot might be helpful here.
 
 #### Installing Apache Maven
@@ -101,7 +101,11 @@ Value to add" *%M2%*<br/>
 **Importent note:**<br/>
 If you're using Windows 10, the editing variables interface is very easy, just click "New" while you're inside the *Path* variable,<br/>
 If you're working with an older version of Windows or you're editing the variable value in text mode, just go to the end of the current text and add *;* as a sperator before adding *%M2%*.<br/>
-**DO NOT**, under any circumstances delete or edit any existing text inside the value.
+**DO NOT**, under any circumstances delete or edit any existing text inside the value.<br/>
+<br/>
+To check the installation proccess, open a Command Prompt window and type *mvn -v* you should be getting the information about the deployed Maven tool,<br/>
+If it's not working properly, make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
+If so, a computer reboot might be helpful here.
 
 #### Installing Apache Tomcat
 For a web server for hosting this skill, I've used [Apache Tomcat](https://tomcat.apache.org) 9.0.0.M22.<br/>
