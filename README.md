@@ -34,7 +34,7 @@ The skill then tries to open the value retrieved as a File, and if it fails it t
 Which means the value retrieved can by either a file or an http address to open in your default browser.<br/>
 Think of the json file like mappings file, you match an "what-to-do" to any "action" you're going to ask alexa to perform.
 
-### Examples of using the skill
+### Example setting of the skill
 **Example 1: Alexa, ask computer to start excel.<br/>**
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
