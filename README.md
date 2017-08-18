@@ -12,7 +12,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
     - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
   - [Configuring](#configuring)
-    - [Setting a static ip for our computer](#setting-a-static-ip-for-our-computer)
+    - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards your static ip](#forwarding-port-443-towards-your-static-ip)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
@@ -122,7 +122,7 @@ Variable value: the folder you've extracted from the zip file, in my case its *E
 We'll get back to configuring Tomcat later.
 
 ### Configuring
-#### Setting a static ip for our computer
+#### Assigning a static ip for our computer
 This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Ling AC1750 router, which is what I'm using.<br/>
 But if you use a diffrent router, well... you're going to have to do this part on your own.<br/>
 But don't worry, I'll give you the guidlines.<br/>
@@ -131,12 +131,15 @@ Physical Address - is the mac address you're going to assign the static ip to on
 IPv4 Address - is the ip you're going to assign to the mac address on your router.<br/>
 Default Gateway - is the ip address of your router, from your router's gui you will configure the static ip.<br/>
 Now, open your favorite web browser and type the ip address of your router, which is the default gateway address we noted earlier.</br>
-Type your user name and password if asked. If you don't know the user name and password, check under your router for a sticker indicating the default ones, if you can't find it, you'll have to dig in google for your router's manufacture name and model, you'll probably find it listed somewhere. Once you're inside, it's highly recommended changing the password to something more private then default one.</br>
-Now, look for anything related to Address Reservation or Static IP and create a record with your computer's mac address and the ip address you wrote down earlier.</br>
+Type your user name and password if asked. If you don't know the user name and password, check under the router for a sticker indicating the default ones, if you can't find it, you'll have to dig around in google for your router's manufacture name and model, you'll probably find it listed somewhere. Once you're inside, it's highly recommended changing the password to something more private then default one.</br>
+Now, look for anything related to *Address Reservation* or *Static IP* and create a record with your computer's mac address and the ip address you wrote down earlier.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and your computer will receive a static ip address once you're done.</br>
-Please note, this ip address is in your lan only, it means nothing outside of your home.
+Please note, this ip address is inside your lan only, it means nothing outside of your home.
 
 #### Forwarding port 443 towards your static ip
+Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
+Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
+Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect on incoming requests with port 443 to your computer.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
