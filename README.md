@@ -1,6 +1,6 @@
 # Alexa skill ask my pc<hr>
 Alexa java skill for opening files and web pages on a local computer running the skill with tomcat.
-You can check out the skill in action at my youtube channel [here](https://youtu.be/UMA1FSwb1pw).
+You can check out the skill in action on my youtube channel [here](https://youtu.be/UMA1FSwb1pw).
 
 ## Table Of Contents
 - [Basic Concept](#basic-concept)
@@ -12,7 +12,8 @@ You can check out the skill in action at my youtube channel [here](https://youtu
     - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
   - [Configuring](#configuring)
-    - [Setting a static ip for our computer](Setting-a-static-ip-for-our-computer)
+    - [Setting a static ip for our computer](#setting-a-static-ip-for-our-computer)
+    - [Forwarding port 443 towards your static ip](#forwarding-port-443-towards-your-static-ip)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -20,44 +21,45 @@ You can check out the skill in action at my youtube channel [here](https://youtu
 
 
 ### Basic Concept
-This is just a concept section, I will go thru all the steps as clearly as I can in the following sections.
+This is just a concept section, I will go through all the steps as clearly as I can in the following sections.
 
-The basic concept is a skill running as a Java Servlet on a local computer running a Tomcat web server,<br/>
+The basic concept here is hosting an alexa custom skill as a web service.</br>
+The skill is a build as a Java Servlet on a local computer running a Tomcat web server,<br/>
 Which means the local computer is the Endpoint for the alexa skill.<br/>
-According to Amazon's demands regarding using a different Endpoint then lambda,<br/>
-The Tomcat server must accept communication using Https protocol with the default port of 443,<br/>
+According to Amazon's requirements regarding using a different Endpoint then lambda,<br/>
+The Tomcat server must support Https protocol and accept requests with the default port of 443,<br/>
 Which means we're going to have to open this port on our router to allow incoming traffic.<br/>
 And of course, if your router is dhcp mode, you will have to give your computer a static address inside your lan and forward all incoming traffic with the port 443 to that static address.<br/>
-Another demand by Amazon is that the Tomcat server needs to present a valid certificate.<br/>
+Another requirements by Amazon is that the Tomcat server needs to present a valid certificate.<br/>
 Amazon allows the use of a self-signed certificates as long as the skill is in development status,<br/>
 Which is a good thing for us, because I don't think anyone would want to go live with a skill that does stuff on their local computer.<br/>
-Other than that Amazon has a few more demands regarding implanting an alexa skill on an Https Endpoint,<br/>
-But besides making sure the incoming request's application id belongs to the skill we created,<br/>
-The Alexa Skill Kit for Java handles all of those demands for us.
+Other than those requirements Amazon has a few more regarding implanting an alexa skill on an Https Endpoint,<br/>
+But besides making sure the incoming request's application id belongs to the skill we've created,<br/>
+The Alexa Skill Kit for Java handles all of those requirements for us. You can read all about the requirements for hosting a custom alexa skill [here](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-web-service).
 
-The skill interface is configured for and Https Endpoint,<br/>
+The skill interface needs to be configured with your modem ip address as an Https Endpoint,<br/>
 So, if you don't want to update the skill interface with the new ip address of your modem every time your isp changes it,<br/>
-Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in the NO-IP servers.
+Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in NOIP's servers.
 
 The skill's invocation word is Computer, but you can use whatever invocation word or phrase you want,<br/>
 Just remember that it's supposed to intuitive and that alexa needs to understand you.
 
 After getting thru the communication part, the skill itself is pretty simple,<br/>
 It has only one major intent called StartAction and that intent has only one custom type slot called Action.<br/>
-The custom type for the slot is called *LIST_OF_ACTIONS* and it is actually a list for all the actions you're going to ask alexa to perform.
+The custom type for the slot is called *LIST_OF_ACTIONS* and it is actually a list for all the actions you're going to ask alexa to perform on you computer.
 
 The skill grabs the Action slot value and in a Key-Value fashion retrieves the necessary action to perform from a designated json file called *action_map.json*.<br/>
 The skill then tries to open the value retrieved as a File, and if it fails it tries to open it as a Uri,<br/>
-Which means the value retrieved can by either a file or an http address to open in your default browser.<br/>
-Think of the json file like mappings file, you match an "what-to-do" to any "action" you're going to ask alexa to perform.
+Which means the value retrieved can by either a file or an web address to open in your default browser.<br/>
+Think of the json file like a mappings file, you match a "what-to-do" to any "action" you're going to ask alexa to perform.
 
 ### Setting up our environment
 In this section I'll try to elaborate as much as I can,<br/>
 If you're familliar with some of the actions described here, feel free to jump to next part.
 #### Prerequisites
 ##### Getting a static dns name from NOIP
-Create and account with https://www.noip.com/ and create a hostname to be used as a static name to access out web server.<br/>
-Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address recived from your isp periodicly.<br/>
+Create an account with https://www.noip.com/ and set up a hostname to be used as a static name to access our web server.<br/>
+Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address received from your isp periodicly.<br/>
 Write down your chosen dns name, we will use it very soon.
 
 #### Creating a self-signed certificate
@@ -65,26 +67,27 @@ Well, this part was actually the most fustrating part for me.<br/>
 I had now prior knowledge of creating or even using certificates before working on this project,<br/>
 There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
 But evnetually I found a way.<br/>
-There are a couple of diffrent ways creating this certificate, maybe mine is not the oprimal one, but it works.<br/>
-Lets get started.<br/>
+There are a couple of diffrent ways creating this certificate, maybe mine is not the most optimal one, but it works!<br/>
+So... Lets get started.<br/>
 - [ ] under construction
 
 #### Installing Java Development Kit (JDK)
 In order to be able to build and the project we're going to use Maven.<br/>
-One of Maven's requirement is JDK. so, you're going to need to intall Java JDK, I've used version 8.<br/>
+One of Maven's requirements is an installation of JDK. so, you're going to need to intall Java JDK, I've used version 8.<br/>
 You can find the correct distribution for your operating system [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), just download and install.<br/>
-After we've finished installing JDK, we now need to add a couple of enviorment variables which will make it easy for us to use Java.<br/>.
+After we've finished installing JDK, we now need to add a couple of enviorment variables which will make it easier for us to use Java.<br/>.
 You can either search windows (if you have windows 10) for the phrase "Edit the system environment variables",<br/>
 or just right-click on This Pc/My Computer >> choose "Advanced system setting" >> and got into the "Advanced" Tab.<br/>
 Now click on "Enviorment Variables...", our focus will be on the "System variables".<br/>
 Click "New..." and the following variable:<br/>
 Variable name: *JAVA_HOME*<br/>
 Variable value: *C:\Program Files\Java\jdk1.8.0_121*<br/>
+**Importent note:**<br/>
 If you've installed java in a diffrent path or you've installed a diffrent version, updated this variable value accoradingly.<br/>
 <br/>
 To check the installation proccess, open a Command Prompt window and type *java -version* you should be getting the information about the installed Java softwere,<br/>
 If it's not working properly, make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
-If so, a computer reboot might be helpful here.
+If you did everything ok, a computer reboot might be helpful.
 
 #### Installing Apache Maven
 [Maven](https://maven.apache.org) is a tool used for project managment, I've used it working on this project, which means we need in order to build the project eventually.<br/>
@@ -92,22 +95,21 @@ You can download the version I've used, 3.5.0 [here](https://maven.apache.org/do
 Unzip it in any folder you see fit, and in the same manner when we've installed the JDK, get yourself to the system enviorment variables screen.<br/>
 Add the following 3 variables in "System variables" section:<br/>
 Variable name: *M2_HOME*<br/>
-Variable value: the folder you've extracted from the zip file, in my case its *E:\dev_tools\apache-maven-3.5.0*<br/>
+Variable value: the folder you've extracted from the zip file, in my case its *E:\apache-maven-3.5.0*<br/>
 Variable name: *MAVEN_OPTS*<br/>
 Variable value: *-Xms256m -Xmx512m*<br/>
 Variable name: *M2*<br/>
 Variable value: *%M2_HOME%\bin*<br/>
-Now we need to add to add a value into an existing variable, of course in the "System variables" section (if it doesnt exits, create it):<br/>
+Now we need to add to add a value into an existing variable in the "System variables" section (if it doesnt exits, create it):<br/>
 Variable name: *Path*<br/>
 Value to add: *%M2%*<br/>
 **Importent note:**<br/>
 If you're using Windows 10, the editing variables interface is very easy, just click "New" while you're inside the *Path* variable,<br/>
 If you're working with an older version of Windows or you're editing the variable value in text mode, just go to the end of the current text and add *;* as a sperator before adding *%M2%*.<br/>
-**DO NOT**, under any circumstances delete or edit any existing text inside the value.<br/>
+**DO NOT**, under any circumstances delete or edit any existing text inside this or any other pre-existing variables.<br/>
 <br/>
 To check the installation proccess, open a Command Prompt window and type *mvn -v* you should be getting the information about the deployed Maven tool,<br/>
-If it's not working properly, make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
-If so, a computer reboot might be helpful here.
+If it's not working properly, make sure you hava java JDK installed properly and follow all the steps in the installing Maven section. If everything looks ok, a computer reboot might be helpful.
 
 #### Installing Apache Tomcat
 For a web server for hosting this skill, I've used [Apache Tomcat](https://tomcat.apache.org) 9.0.0.M22.<br/>
@@ -116,18 +118,25 @@ You can download the core binary distribution [here](https://tomcat.apache.org),
 Now, in the same manner when we've installed the JDK and Maven, get yourself to the system enviorment variables screen.<br/>
 In the "System variables" section we're going to add the following variable:<br/>
 Variable name: *CATALINA_HOME*
-Variable value: the folder you've extracted from the zip file, in my case its *E:\dev_tools\apache-tomcat-9.0.0.M20*<br/>
+Variable value: the folder you've extracted from the zip file, in my case its *E:\apache-tomcat-9.0.0.M20*<br/>
 We'll get back to configuring Tomcat later.
 
 ### Configuring
 #### Setting a static ip for our computer
-This part you're going to have to on your own, because I can tell you how to it if you use a TP-Ling AC1750 router, which is what i use.<br/>
-But if you use a diffrent router, well, you're going to have to do this part on your own.<br/>
+This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Ling AC1750 router, which is what I'm using.<br/>
+But if you use a diffrent router, well... you're going to have to do this part on your own.<br/>
 But don't worry, I'll give you the guidlines.<br/>
 First of all, open up a Command Prompt windows and type *ipconfig /all*, identify your ethernet adapter and take note of the following:<br/>
 Physical Address - is the mac address you're going to assign the static ip to on your router.<br/>
 IPv4 Address - is the ip you're going to assign to the mac address on your router.<br/>
 Default Gateway - is the ip address of your router, from your router's gui you will configure the static ip.<br/>
+Now, open your favorite web browser and type the ip address of your router, which is the default gateway address we noted earlier.</br>
+Type your user name and password if asked. If you don't know the user name and password, check under your router for a sticker indicating the default ones, if you can't find it, you'll have to dig in google for your router's manufacture name and model, you'll probably find it listed somewhere. Once you're inside, it's highly recommended changing the password to something more private then default one.</br>
+Now, look for anything related to Address Reservation or Static IP and create a record with your computer's mac address and the ip address you wrote down earlier.</br>
+Depending on the router, you might be asked to reboot it. Go ahead and reboot it and your computer will receive a static ip address once you're done.</br>
+Please note, this ip address is in your lan only, it means nothing outside of your home.
+
+#### Forwarding port 443 towards your static ip
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
