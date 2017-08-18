@@ -1,5 +1,5 @@
 # Alexa skill ask my pc<hr>
-Alexa java skill for opening files and web pages on a local computer running the skill with tomcat.
+Alexa custom skill written in java for opening files and web pages on a local computer running the skill as a web service with tomcat.
 You can check out the skill in action on my youtube channel [here](https://youtu.be/UMA1FSwb1pw).
 
 ## Table Of Contents
@@ -14,6 +14,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
+    - [Configuring Tomcat for https support](#configuring-tomcat for-https-support)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -140,6 +141,17 @@ Please note, this ip address is inside your lan only, it means nothing outside o
 Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
 Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect on incoming requests with port 443 to your computer.
+
+#### Configuring Tomcat for https support
+Now that we're finished with all the network stuff, we need to make our Tomcat web server support https protocol.</br>
+In order to do that, we need to define a Connector. Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor. Find the *Service* tag and add the follwing tag right under that tag.</br>
+*<Connector
+           protocol="org.apache.coyote.http11.Http11NioProtocol"
+           port="443" maxThreads="200"
+           scheme="https" secure="true" SSLEnabled="true"
+           keystoreFile="**location of jks file goes here**" keystorePass="**keystore password goes here**"
+           clientAuth="false" sslProtocol="TLS"/>*</br>
+
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
