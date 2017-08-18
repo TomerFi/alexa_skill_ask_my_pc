@@ -150,7 +150,7 @@ In order to do that, we need to define a Connector. Go to the tomcat folder, whe
            port="443" maxThreads="200"</br>
            scheme="https" secure="true" SSLEnabled="true"</br>
            keystoreFile="**path of jks file goes here**" keystorePass="**keystore password goes here**"</br>
-           clientAuth="false" sslProtocol="TLS"/>*\</br>
+           clientAuth="false" sslProtocol="TLS"/>*</br>
 Just make sure to update your chosen keystore password in the *keystorePass* property,</br>
 And the path of the jks file in the *keystoreFile* property before saving.</br>
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.
