@@ -140,16 +140,17 @@ Please note, this ip address is inside your lan only, it means nothing outside o
 #### Forwarding port 443 towards our static ip
 Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
 Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
-Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect on incoming requests with port 443 to your computer.
+Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our computer accept those requests, in the next section.
 
 #### Configuring Tomcat for https support
 Now that we're finished with all the network stuff, we need to make our Tomcat web server support https protocol.</br>
 In order to do that, we need to define a Connector. Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br>
-Find the *Service* tag and add an https connector right under it. You can find an example of the connector is th</br>
+Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) I've added to this project, just edit its content and copy it to the *server.xml* file.</br>
 Just make sure to update your chosen keystore password in the *keystorePass* property,</br>
 And the path of the jks file in the *keystoreFile* property before saving.</br>
-As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.
+As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.</br>
 For example, if your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
+I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by addind \<!-- before the connector starting tag and \--> after the connector ending tag.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
