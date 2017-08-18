@@ -159,11 +159,15 @@ I just want to recommend that you will comment out any other connectors that mig
 Your Tomcat web server is now supporting http protocol.
 
 #### Configuring Tomcat default host name
-This is not a "must do" step, you can skip it and it will not effect the skill activit at all.</br>
+This is not a must do step, you can skip it and it will not effect the skill activity at all.</br>
 Nevertheless, I would recommend doing it for better log records.</br>
-Find inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
+Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
 
 #### Configuring Servlet and Servlet Mappings
+Now we need to map a pattern to our servlet, I know we didn't actually did the servlet part yet, so this maybe a little bit out of the blue, but bare with me.</br>
+We need to create a servlet reference for tomcat and map a url pattern to it.</br>
+Our servlet will eventually be *askmypc.AskMyPcServlet*, while *askmypc* as the package name and *AskMyPcServlet* as our servlet class name. And give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
+After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
