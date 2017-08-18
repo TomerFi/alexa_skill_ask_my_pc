@@ -1,0 +1,9 @@
+<servlet>
+	<servlet-name>AskMyPc</servlet-name>
+	<servlet-class>askmypc.AskMyPcServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>AskMyPc</servlet-name>
+	<url-pattern>/askmypc</url-pattern>
+</servlet-mapping>
