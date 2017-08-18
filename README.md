@@ -13,7 +13,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
     - [Installing Apache Tomcat](#installing-apache-tomcat)
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
-    - [Forwarding port 443 towards your static ip](#forwarding-port-443-towards-your-static-ip)
+    - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -136,7 +136,7 @@ Now, look for anything related to *Address Reservation* or *Static IP* and creat
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and your computer will receive a static ip address once you're done.</br>
 Please note, this ip address is inside your lan only, it means nothing outside of your home.
 
-#### Forwarding port 443 towards your static ip
+#### Forwarding port 443 towards our static ip
 Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
 Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect on incoming requests with port 443 to your computer.
