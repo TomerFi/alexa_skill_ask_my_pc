@@ -145,12 +145,12 @@ Depending on the router, you might be asked to reboot it. Go ahead and reboot it
 #### Configuring Tomcat for https support
 Now that we're finished with all the network stuff, we need to make our Tomcat web server support https protocol.</br>
 In order to do that, we need to define a Connector. Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor. Find the *Service* tag and add the follwing tag right under that tag.</br>
-*\<Connector</br>
-           protocol="org.apache.coyote.http11.Http11NioProtocol"
-           port="443" maxThreads="200"
-           scheme="https" secure="true" SSLEnabled="true"
-           keystoreFile="**path of jks file goes here**" keystorePass="**keystore password goes here**"
-           clientAuth="false" sslProtocol="TLS"/>\*</br>
+\*<Connector</br>
+           protocol="org.apache.coyote.http11.Http11NioProtocol"</br>
+           port="443" maxThreads="200"</br>
+           scheme="https" secure="true" SSLEnabled="true"</br>
+           keystoreFile="**path of jks file goes here**" keystorePass="**keystore password goes here**"</br>
+           clientAuth="false" sslProtocol="TLS"/>*\</br>
 Just make sure to update your chosen keystore password in the *keystorePass* property,</br>
 And the path of the jks file in the *keystoreFile* property before saving.</br>
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.
