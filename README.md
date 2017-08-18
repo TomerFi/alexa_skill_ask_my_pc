@@ -167,7 +167,11 @@ Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* pro
 Now we need to map a pattern to our servlet, I know we didn't actually did the servlet part yet, so this maybe a little bit out of the blue, but bare with me.</br>
 We need to create a servlet reference for tomcat and map a url pattern to it.</br>
 Our servlet will eventually be *askmypc.AskMyPcServlet*, while *askmypc* as the package name and *AskMyPcServlet* as our servlet class name. And give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
-After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*.
+After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*.</br>
+
+Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open the file *web.xml* and find the tag *web-app*.</br>
+Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) I've added to this project.</br>
+If you want to change the url pattern before coping the content, you can, just write down your selected pattern for later use.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
