@@ -14,7 +14,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
-    - [Configuring Tomcat for https support](#configuring-tomcat for-https-support)
+    - [Configuring Tomcat for https support](#configuring-tomcat-for-https-support)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -145,13 +145,16 @@ Depending on the router, you might be asked to reboot it. Go ahead and reboot it
 #### Configuring Tomcat for https support
 Now that we're finished with all the network stuff, we need to make our Tomcat web server support https protocol.</br>
 In order to do that, we need to define a Connector. Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor. Find the *Service* tag and add the follwing tag right under that tag.</br>
-*<Connector
+*'<Connector
            protocol="org.apache.coyote.http11.Http11NioProtocol"
            port="443" maxThreads="200"
            scheme="https" secure="true" SSLEnabled="true"
-           keystoreFile="**location of jks file goes here**" keystorePass="**keystore password goes here**"
-           clientAuth="false" sslProtocol="TLS"/>*</br>
-
+           keystoreFile="**path of jks file goes here**" keystorePass="**keystore password goes here**"
+           clientAuth="false" sslProtocol="TLS"/>'*</br>
+Just make sure to update your chosen keystore password in the *keystorePass* property,</br>
+And the path of the jks file in the *keystoreFile* property before saving.</br>
+As far as the path goes, the path is relative and you can't use windows syntax, instead of '\' use '/'.
+For example, I your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
