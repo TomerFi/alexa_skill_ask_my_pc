@@ -15,6 +15,8 @@ You can check out the skill in action on my youtube channel [here](https://youtu
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
     - [Configuring Tomcat for https support](#configuring-tomcat-for-https-support)
+    - [Configuring Tomcat default host name](#configuring-tomcat-default-host-name)
+    - [Configuring Servlet and Servlet Mappings](#configuring-servlet-and-servlet-mappings)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -152,7 +154,16 @@ And the path of the jks file in the *keystoreFile* property before saving.</br>
 
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.</br>
 For example, if your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
-I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so: \<!-- UNWANTED CONNECTOR \-->.
+I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so:</br>
+\<!-- UNWANTED CONNECTOR \-->.</br>
+Your Tomcat web server is now supporting http protocol.
+
+#### Configuring Tomcat default host name
+This is not a "must do" step, you can skip it and it will not effect the skill activit at all.</br>
+Nevertheless, I would recommend doing it for better log records.</br>
+Find inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
+
+#### Configuring Servlet and Servlet Mappings
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
