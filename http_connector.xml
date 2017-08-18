@@ -1,0 +1,6 @@
+<Connector
+	   protocol="org.apache.coyote.http11.Http11NioProtocol"
+	   port="443" maxThreads="200"
+	   scheme="https" secure="true" SSLEnabled="true"
+	   keystoreFile="#PATH_OF_KEYSTOREFILE#" keystorePass="#KEYSTORE_PASSWORD#"
+	   clientAuth="false" sslProtocol="TLS"/>
