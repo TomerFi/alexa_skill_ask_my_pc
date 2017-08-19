@@ -17,7 +17,8 @@ Please follow this guide as closely as you can to insure a working skill, I woul
     - [Installing Java Development Kit (JDK)](#installing-java-development-kit-jdk)
     - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
-    - [Creating a self-signed certificate](#creating-a-self-signed-certificate)    
+    - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
+      - [Creating the certificate](#creating-the-certificate)
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
@@ -84,7 +85,7 @@ Create an account with https://www.noip.com/ and set up a hostname to be used as
 Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address received from your isp periodicly.<br/>
 Write down your chosen dns name, we will use it very soon.
 
-#### Installing Java Development Kit (JDK)
+##### Installing Java Development Kit (JDK)
 In order to be able to build and the project we're going to use Maven.<br/>
 One of Maven's requirements is an installation of JDK. so, you're going to need to intall Java JDK, I've used version 8.<br/>
 You can find the correct distribution for your operating system [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), just download and install.<br/>
@@ -102,7 +103,7 @@ To check the installation proccess, open a Command Prompt window and type *java 
 If it's not working properly, make sure the installation was finished and that you've added the *JAVA_HOME* variable correctly.<br/>
 If you did everything ok, a computer reboot might be helpful.
 
-#### Installing Apache Maven
+##### Installing Apache Maven
 [Maven](https://maven.apache.org) is a tool used for project managment, I've used it working on this project, which means we need in order to build the project eventually.<br/>
 You can download the version I've used, 3.5.0 [here](https://maven.apache.org/download.cgi), this if of course a binary ditribution.<br/>
 Unzip it in any folder you see fit, and in the same manner when we've installed the JDK, get yourself to the system enviorment variables screen.<br/>
@@ -124,7 +125,7 @@ If you're working with an older version of Windows or you're editing the variabl
 To check the installation proccess, open a Command Prompt window and type *mvn -v* you should be getting the information about the deployed Maven tool,<br/>
 If it's not working properly, make sure you hava java JDK installed properly and follow all the steps in the installing Maven section. If everything looks ok, a computer reboot might be helpful.
 
-#### Installing Apache Tomcat
+##### Installing Apache Tomcat
 For a web server for hosting this skill, I've used [Apache Tomcat](https://tomcat.apache.org) 9.0.0.M22.<br/>
 I've used the binary distribution, but you can also deploy it as a windows service.<br/>
 You can download the core binary distribution [here](https://tomcat.apache.org), there is no installation involved when using the binary distribution, just open the downloaded zip file on any folder you see fit, just remember that we're going to use this folder later on.<br/>
@@ -134,14 +135,15 @@ Variable name: *CATALINA_HOME*
 Variable value: the folder you've extracted from the zip file, in my case its *E:\apache-tomcat-9.0.0.M20*<br/>
 We'll get back to configuring Tomcat later.
 
-#### Creating a self-signed certificate
+##### Creating a self-signed certificate
 Well, this part was actually the most fustrating part for me.<br/>
 I had now prior knowledge of creating or even using certificates before working on this project,<br/>
 There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
 But evnetually I found a way.<br/>
 There are a couple of diffrent ways creating this certificate, maybe mine is not the most optimal one, but it works!<br/>
 So... Lets get started.<br/>
-- [ ] under construction
+
+###### Creating the certificate
 
 #### Configuring
 ##### Assigning a static ip for our computer
