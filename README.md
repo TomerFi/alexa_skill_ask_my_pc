@@ -5,7 +5,7 @@ This project is designed for personal use only.</br>
 
 This skill flow is the shortest one possible:</br>
 *Alexa enabled device \--> Alexa servers \--> Your local computer*</br>
-which garuntees faster responses.</br>
+which guarantees faster responses.</br>
 
 Please follow this guide as closely as you can to insure a working skill, I would recommend reading it thrugh before actually following it.
 
