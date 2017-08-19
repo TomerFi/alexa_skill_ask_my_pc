@@ -17,6 +17,9 @@ You can check out the skill in action on my youtube channel [here](https://youtu
     - [Configuring Tomcat for https support](#configuring-tomcat-for-https-support)
     - [Configuring Tomcat default host name](#configuring-tomcat-default-host-name)
     - [Configuring Servlet and Servlet Mappings](#configuring-servlet-and-servlet-mappings)
+    - [Constructing our endpoint url](#constructing-our-endpoint-url)
+- [Creating our skill](#creating-our-skill)
+  - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -124,8 +127,8 @@ Variable name: *CATALINA_HOME*
 Variable value: the folder you've extracted from the zip file, in my case its *E:\apache-tomcat-9.0.0.M20*<br/>
 We'll get back to configuring Tomcat later.
 
-### Configuring
-#### Assigning a static ip for our computer
+#### Configuring
+##### Assigning a static ip for our computer
 This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Ling AC1750 router, which is what I'm using.<br/>
 But if you use a diffrent router, well... you're going to have to do this part on your own.<br/>
 But don't worry, I'll give you the guidlines.<br/>
@@ -139,12 +142,12 @@ Now, look for anything related to *Address Reservation* or *Static IP* and creat
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and your computer will receive a static ip address once you're done.</br>
 Please note, this ip address is inside your lan only, it means nothing outside of your home.
 
-#### Forwarding port 443 towards our static ip
+##### Forwarding port 443 towards our static ip
 Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
 Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our computer accept those requests, in the next section.
 
-#### Configuring Tomcat for https support
+##### Configuring Tomcat for https support
 Now we need to make our Tomcat web server support https protocol. In order to do that, we need to define a Connector.</br>
 Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br></br>
 Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) I've added to this project, just edit its content and copy it the full content to the *server.xml* file.</br>
@@ -158,12 +161,12 @@ Your Tomcat web server is now supporting https protocol and will present your se
 I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so:</br>
 \<!-- UNWANTED CONNECTOR \-->.
 
-#### Configuring Tomcat default host name
+##### Configuring Tomcat default host name
 This is not a must do step, you can skip it and it will not effect the skill activity at all.</br>
 Nevertheless, I would recommend doing it for better log records.</br>
 Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
 
-#### Configuring Servlet and Servlet Mappings
+##### Configuring Servlet and Servlet Mappings
 Now we need to map a pattern to our servlet, I know we didn't actually did the servlet part yet, so this maybe a little bit out of the blue, but bare with me.</br>
 We need to create a servlet reference for tomcat and map a url pattern to it.</br>
 Our servlet class will eventually be *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
@@ -173,13 +176,17 @@ Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open th
 Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) I've added to this project.</br>
 If you want to change the url pattern before coping the content, you can, just write down your selected pattern for later use.
 
-#### Constructing our endpoint url
+##### Constructing our endpoint url
 Now, before we can create our skill interface with alexa, lets prepare our endpoint url. The endpoint url will constructed like this:
-- the protocol we defined in our tom connector: *'https://'*
-- the dns name we got from NOIP: *'mydomainname.whatever'*
-- the port we've forwarded on our router: *':443'*
-- the url pattern we've mapped to our servlet: *'/askmypc'*
-The end result will be: *https://mydomainname.whatever:443/askmypc*
+- the protocol we've defined in our tom connector: *https://*
+- the dns name we got from NOIP: *mydomainname.whatever*
+- the port we've forwarded on our router: *:443*
+- the url pattern we've mapped to our servlet: */askmypc*</br>
+The end result will be something like: *https://mydomainname.whatever:443/askmypc*</br>
+This is your endpoint url, write it down and lets set up our skill interface.
+
+### Creating our skill
+#### Setting up a skill interface with alexa
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
