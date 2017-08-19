@@ -246,7 +246,7 @@ If you choose to work with the binary distributaion of tomcat like I did, and no
 ### Testing our skill
 Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the *Test* tab and scroll down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
 Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open facebook* in the testing tab, the result will be facebook opening up on the default browser on your computer.</br>
-Before leaving this guide, please take a look in [*Examples section*](#example-settings-of-the-skill) to understand how to configure your skill correctly and in the [*Logs section*](#logs) in order to understand how to read the log files if you ever need to.
+Before leaving this guide, please take a look in [*Examples section*](#example-settings-of-the-skill) to understand how to configure your skill correctly and in the [*Logs section*](#logs) in order to understand how to read the log files if you'll ever need to.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
@@ -266,3 +266,15 @@ Which means we can now ask alexa to tell our skill to open facebook.
 Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
 
 ### Logs
+If you followed this guide correctly, there are 3 logs avaialabe for your use. In the case of something not working properly, you can check this logs and find out how to fix it. These logs are at the server side, which means they only work as long as the request succesfully arrived from the alexa servers to your server. If something went wrong with the skill interface you will not see anything helpfull in these log files, in this case you will have to check your alexa app for any cards or try testing it with Test tab in the alexa developer portal to see what went wrong.</br>
+Navigate to your tomcat folder and open the subfolder calls *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
+- The first log file name is the name of your dns name prefixed with *_access_log.yyyy-mm-dd.txt*.</br>
+This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
+In this log file you can all the requests to you web server and response codes from you web server.
+- The second log file name is *AskMyPc.yyyy-mm-dd.log*.</br>
+This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
+In this log you can see details of every interaction with the skill, you will see rather or not the request passed the validation part and what exactrly happend thrugh the interaction from start to end. Each raw will contain a session id which is unique per each session created, so you will be able to differ one interation from another.
+- The third log file name is *AskMyPc.error.log* and it will contain the stack trace for every error occurring in the skill.</br>
+This is the only log not daily rolled.
+
+You can delete all 3 logs if you need to, the skill will simply create new ones.
