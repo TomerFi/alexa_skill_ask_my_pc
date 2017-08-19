@@ -233,6 +233,7 @@ You should see a new folder created named *target*, open it and copy the followi
 - Copy the file *AskMyPc-1.0.0.jar* to the folder *webapps/ROOT/WEB-INF/lib*. This is the skill itself.
 - Copy the folder *conf_files* to the folder *webapps/ROOT/WEB-INF*. This folder holds the configuration file you'll use to map actions to slot values. I've added a couple of examples for this configutarion file [here](#example-settings-of-the-skill).
 That's it. You skill is now deployed to your web server, not we need to start the server.</br>
+
 You can now delete the extracted zip file of this repository, you have no need for it anymore.
 
 #### Start Tomcat web server
