@@ -196,7 +196,7 @@ Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skills 
 Skill Information tab, is where we define how to invoke our skill. Fill in the next parameters, leave the rest as it is:
 - *Name*: AskMyPc, you can name the skill what ever you want, your not going to go live with this skill so it doesn't really matters.
 - *Invocation Name*: Computer, this is important, the invocation name is the way you ask alexa to start the skill. *Alexa, start computer*. If you don't want to use *Computer* as an invocation name, just make sure to take a look [here](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill#invocation-name-requirements) before choosing a good working invocation name.
-Click *Save* and write down your generated *Application Id*.</br>
+Click *Save* and **write down your generated *Application Id*.**</br>
 
 Interaction Model tab, is where we define how to interact with our skill:
 - *Intent Schema*: copy the content from the the file I've added to this project: [*speechAssets/intentSchema.json*](speechAssets/intentSchema.json). This is basicly just telling alexa what are the intents our code can handle.
@@ -216,7 +216,7 @@ SSL Certificate tab, is where we set up our certificate:
 Test tab, this is where we can test our skill.</br>
 Now, we can't test is yet because we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
 Scroll down to the *Service Simulator* section and type whatever you want as an utterance (it's not going to work anyway) and click *Ask AskMyPc*.</br>
-Take a look at the *Service Request* window, find and write down the value of the *userId* parameter.
+Take a look at the *Service Request* window, find and **write down the value of the *userId* parameter.**
 
 #### Creating and deploying our skill
 Download this repository as a zip file and extract it wherever you want, open the folder *src, main, java, askmypc* and open the file *AskMyPcSpeechlet.java* in any text editor:
