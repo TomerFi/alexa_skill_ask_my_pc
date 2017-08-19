@@ -222,6 +222,7 @@ Take a look at the *Service Request* window, find and **write down the value of 
 Download this repository as a zip file and extract it wherever you want, open the folder *src, main, java, askmypc* and open the file *AskMyPcSpeechlet.java* in any text editor:
 - Edit the value of *APPLICATIONID*
 - Edit the value of *USERID*
+
 with the application and user ids you wrote down [here](#setting-up-a-skill-interface-with-alexa) and save the file.</br>
 This is actually how we limit our skill to recieve requests only from our own skill and our own user.</br>
 Open a Command Prompt windows and navigate to location you've extracted the downloaded zip file, make sure you are in the same folder of the *pom.xml* file which in the maven instructions file on how to create the package.</br>
@@ -236,6 +237,7 @@ That's it. You skill is now deployed to your web server, not we need to start th
 Navigate to your tomcat folder and open the subfolder called *bin*. You will find two *.bat* files for your use:
 - *startup.bat* to start your server.
 - *shutdown.bat* to stop your server.
+
 If you choose to work with the binary distributaion of tomcat like me, and not as a windows service. The web server won't start itself when you computer boot up, you'll have to run the *startup.bat* file manually or create some kind of schedule for it. I just prefered creating a shortcut on my desktop and double clicking it whenever I want the server running, I actually never shutdown my pc, so the server is always on anyways.
 
 ### Testing our skill
