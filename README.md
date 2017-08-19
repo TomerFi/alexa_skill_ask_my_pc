@@ -211,7 +211,7 @@ Configuration tab, is where we define our skill endpoint:
 
 SSL Certificate tab, is where we set up our certificate:
 - *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, because we are not going to go live with this skill, a self-signed certificate will suffice.
-- In the text box copy the all content of *.pem* file we've created with our self-singed certificate. This is the part where we tell the skill interface what is the certificate to present to our web service. Click *Save* and *Next*.
+- In the text box copy the all content of *.pem* file we've created with our self-singed certificate. This is the part where we tell the skill interface what is the certificate to present to our web server. Click *Save* and *Next*.
 
 Test tab, this is where we can test our skill.</br>
 Now, we can't test is yet because we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
