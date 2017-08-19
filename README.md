@@ -22,6 +22,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
   - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
   - [Creating and deploying our skill](#creating-and-deploying-our-skill)
   - [Start Tomcat web server](#start-tomcat-web-server)
+- [Testing our skill](#testing-our-skill)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -201,7 +202,7 @@ Interaction Model tab, is where we define how to interact with our skill:
 - *Intent Schema*: copy the content from the the file I've added to this project: [*speechAssets/intentSchema.json*](speechAssets/intentSchema.json). This is basicly just telling alexa what are the intents our code can handle.
 - *Custom Slot Types*: Type *LIST_OF_ACTIONS* to create a new custom slot which is mapped to the *StartAction* intent in the Intent Schema.
 - *Enter Values*: copy the content from the file I've added to this project: [*speechAssets/LIST_OF_ACTIONS.txt*](speechAssets/LIST_OF_ACTIONS.txt) to create a list of values valid for our custom slot and click *Add* to add the slot. Please note that this is just a basic default list I've created, once you get the skill working, you will be able to change it as much as you want.
-- *Sample Utterances*: copy the content from the file I've added to this project [*speechAssets/sampleUtterances.txt*](speechAssets/sampleUtterances.txt) and click *Save* and *Next*. this is actually the part where we teach alexa how to parse our sentences and phrases and tell where in the prase she should expect our custom slot value. You can add as many sample utterances as you want, the more the better, just try to confuse alexa with poorly built utterances.
+- *Sample Utterances*: copy the content from the file I've added to this project [*speechAssets/sampleUtterances.txt*](speechAssets/sampleUtterances.txt) and click *Save* and *Next*. this is actually the part where we teach alexa how to parse our sentences and phrases and tell where in the phrase she should expect our custom slot value. You can add as many sample utterances as you want, the more the better, just try to confuse alexa with poorly built utterances.
 
 Configuration tab, is where we define our skill endpoint:
 - *Service Endpoint Type*: HTTPS.
@@ -237,13 +238,18 @@ Navigate to your tomcat folder and open the subfolder called *bin*. You will fin
 - *shutdown.bat* to stop your server.
 If you choose to work with the binary distributaion of tomcat like me, and not as a windows service. The web server won't start itself when you computer boot up, you'll have to run the *startup.bat* file manually or create some kind of schedule for it. I just prefered creating a shortcut on my desktop and double clicking it whenever I want the server running, I actually never shutdown my pc, so the server is always on anyways.
 
+### Testing our skill
+Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the test tab and scrol down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
+Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open facebook* in the testing tab, the result will be facebook opening up on the default browser on your computer.</br>
+Before leaving this guide, please take a look int [*Examples section*](#example-settings-of-the-skill) to understand how to cinfiguring your skill and in the [*Logs section*](#logs) in order to understand how to correctly read the log files if you ever need to.
+
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
 Which means we can now ask alexa to tell our skill to open excel.
 
-2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *action_map.json* file.<br/>
+2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *conf_files/action_map.json* file.<br/>
 Which means that for every time the skill receives the action named excel, the skill will then open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
 
 #### Example 2: Alexa ask computer to open facebook
@@ -251,12 +257,7 @@ For that purpose, we will:<br/>
 1- add **facebook** to the *LIST_OF_ACTIONS* custom slot ype and save our skill interface.<br/>
 Which means we can now ask alexa to tell our skill to open facebook.
 
-2- add the line **"facebook": "https://www.facebook.com/"** to our *action_map.json* file.<br/>
+2- add the line **"facebook": "https://www.facebook.com/"** to our *conf_files/action_map.json* file.<br/>
 Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
-
-### Testing our skill
-Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the test tab and scrol down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
-Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open facebook* in the testing tab, the result will be facebook opening up on the default browser on your computer.</br>
-Before leaving this guide, please take a look in the [*Logs section*](#logs) in order to understand how to correctly read the log files if you ever need to.
 
 ### Logs
