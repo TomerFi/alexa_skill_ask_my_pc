@@ -189,8 +189,8 @@ This is your endpoint url, write it down and lets set up our skill interface.
 
 ### Creating our skill
 #### Setting up a skill interface with alexa
-Open your web browser and sign in your amazon developer account [here](https://developer.amazon.com/). If you don't have an account, create it.</br>
-Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skils Kit* section, then click *Add New Skill* and set up you skill like so:</br>
+Open your web browser and sign in with your amazon developer account [here](https://developer.amazon.com/). If you don't have an account, create it.</br>
+Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skills Kit* section, then click *Add New Skill* and set up you skill like so:</br>
 Skill Information tab, is where we define how to invoke our skill. Fill in the next parameters, leave the rest as it is:
 - *Name*: AskMyPc, you can name the skill what ever you want, your not going to go live with this skill so it doesn't really matters.
 - *Invocation Name*: Computer, this is important, the invocation name is the way you ask alexa to start the skill. *Alexa, start computer*. If you don't want to use *Computer* as an invocation name, just make sure to take a look [here](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill#invocation-name-requirements) before choosing a good working invocation name.
