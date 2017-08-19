@@ -21,6 +21,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
 - [Creating our skill](#creating-our-skill)
   - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
   - [Creating and deploying our skill](#creating-and-deploying-our-skill)
+  - [Start Tomcat web server](#start-tomcat-web-server)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -217,7 +218,24 @@ Scroll down to the *Service Simulator* section and type whatever you want as an 
 Take a look at the *Service Request* window, find and write down the value of the *userId* parameter.
 
 #### Creating and deploying our skill
+Download this repository as a zip file and extract it wherever you want, open the folder *src, main, java, askmypc* and open the file *AskMyPcSpeechlet.java* in any text editor:
+- Edit the value of *APPLICATIONID*
+- Edit the value of *USERID*
+with the application and user ids you wrote down [here](#setting-up-a-skill-interface-with-alexa) and save the file.</br>
+This is actually how we limit our skill to recieve requests only from our own skill and our own user.</br>
+Open a Command Prompt windows and navigate to location you've extracted the downloaded zip file, make sure you are in the same folder of the *pom.xml* file which in the maven instructions file on how to create the package.</br>
+Type **mvn package**, if you did everything correctly you are suppose to see the package being build by Maven.</br>
+Once the build is finished and you see a *BUILD SUCCESS* message on the Command Prompt window, you can close this window and go back to the extracted zip file.</br>
+You should see a new folder created named *target*, open it and copy the following to your Tomcat server folder:
+- Copy the file *AskMyPc-1.0.0.jar* to the folder *webapps/ROOT/WEB-INF/lib*. This is the skill itself.
+- Copy the folder *conf_files* to the folder *webapps/ROOT/WEB-INF*. This folder holds the configuration file you'll use to map actions to slot values. I've added a couple of examples for this configutarion file [here](#example-settings-of-the-skill).
+That's it. You skill is now deployed to your web server, not we need to start the server.
 
+#### Start Tomcat web server
+Navigate to your tomcat folder and open the subfolder called *bin*. You will find two *.bat* files for your use:
+- *startup.bat* to start your server.
+- *shutdown.bat* to stop your server.
+If you choose to work with the binary distributaion of tomcat like me, and not as a windows service. The web server won't start itself when you computer boot up, you'll have to run the *startup.bat* file manually or create some kind of schedule for it. I just prefered creating a shortcut on my desktop and double clicking it whenever I want the server running, I actually never shutdown my pc, so the server is always on anyways.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
@@ -235,5 +253,10 @@ Which means we can now ask alexa to tell our skill to open facebook.
 
 2- add the line **"facebook": "https://www.facebook.com/"** to our *action_map.json* file.<br/>
 Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
+
+### Testing our skill
+Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the test tab and scrol down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
+Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open facebook* in the testing tab, the result will be facebook opening up on the default browser on your computer.</br>
+Before leaving this guide, please take a look in the [*Logs section*](#logs) in order to understand how to correctly read the log files if you ever need to.
 
 ### Logs
