@@ -6,7 +6,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
 
 ## Table Of Contents
 - [Release of liability](#release-of-liability)
-- [Basic Concept](#basic-concept)
+- [Basic concept](#basic-concept)
 - [Setting up our environment](#setting-up-our-environment)
   - [Prerequisites](#prerequisites)
     - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
@@ -38,7 +38,7 @@ I take no responsibility for any wrong doings on your computer made by yourself 
 If at any point you feel not sure or you're concern your personal security maybe breached, please stop following this guide, rollback any changes you might have made and if need, please contact an it expert to help you fix your computer's security.</br>
 This is in no way a commercial skill, it is not meant profit from by me or any other. If you decide to try and profit of this skill, legal actions might be taken against you by the companies developing the tools and used in this guide.
 
-### Basic Concept
+### Basic concept
 This is just a concept section, I will go through all the steps as clearly as I can in the following sections.
 
 The basic concept here is hosting an alexa custom skill as a web service.</br>
