@@ -267,13 +267,16 @@ Which means that for every time the skill receives the action named facebook, th
 
 ### Logs
 If you followed this guide correctly, there are 3 logs avaialabe for your use. In the case of something not working properly, you can check this logs and find out how to fix it. These logs are at the server side, which means they only work as long as the request succesfully arrived from the alexa servers to your server. If something went wrong with the skill interface you will not see anything helpfull in these log files, in this case you will have to check your alexa app for any cards or try testing it with Test tab in the alexa developer portal to see what went wrong.</br>
+
 Navigate to your tomcat folder and open the subfolder calls *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
 - The first log file name is the name of your dns name prefixed with *_access_log.yyyy-mm-dd.txt*.</br>
 This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
-In this log file you can all the requests to you web server and response codes from you web server.
+In this log file you can see all the requests to you web server and response codes from you web server.
+
 - The second log file name is *AskMyPc.yyyy-mm-dd.log*.</br>
 This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
 In this log you can see details of every interaction with the skill, you will see rather or not the request passed the validation part and what exactrly happend thrugh the interaction from start to end. Each raw will contain a session id which is unique per each session created, so you will be able to differ one interation from another.
+
 - The third log file name is *AskMyPc.error.log* and it will contain the stack trace for every error occurring in the skill.</br>
 This is the only log not daily rolled.
 
