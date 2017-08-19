@@ -14,10 +14,10 @@ Please follow this guide as closely as you can to insure a working skill, I woul
 - [Setting up our environment](#setting-up-our-environment)
   - [Prerequisites](#prerequisites)
     - [Getting a static dns name from NOIP](#getting-a-static-dns-name-from-noip)
-    - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
     - [Installing Java Development Kit (JDK)](#installing-java-development-kit-jdk)
     - [Installing Apache Maven](#installing-apache-maven)
     - [Installing Apache Tomcat](#installing-apache-tomcat)
+    - [Creating a self-signed certificate](#creating-a-self-signed-certificate)    
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
@@ -84,15 +84,6 @@ Create an account with https://www.noip.com/ and set up a hostname to be used as
 Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address received from your isp periodicly.<br/>
 Write down your chosen dns name, we will use it very soon.
 
-#### Creating a self-signed certificate
-Well, this part was actually the most fustrating part for me.<br/>
-I had now prior knowledge of creating or even using certificates before working on this project,<br/>
-There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
-But evnetually I found a way.<br/>
-There are a couple of diffrent ways creating this certificate, maybe mine is not the most optimal one, but it works!<br/>
-So... Lets get started.<br/>
-- [ ] under construction
-
 #### Installing Java Development Kit (JDK)
 In order to be able to build and the project we're going to use Maven.<br/>
 One of Maven's requirements is an installation of JDK. so, you're going to need to intall Java JDK, I've used version 8.<br/>
@@ -142,6 +133,15 @@ In the "System variables" section we're going to add the following variable:<br/
 Variable name: *CATALINA_HOME*
 Variable value: the folder you've extracted from the zip file, in my case its *E:\apache-tomcat-9.0.0.M20*<br/>
 We'll get back to configuring Tomcat later.
+
+#### Creating a self-signed certificate
+Well, this part was actually the most fustrating part for me.<br/>
+I had now prior knowledge of creating or even using certificates before working on this project,<br/>
+There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
+But evnetually I found a way.<br/>
+There are a couple of diffrent ways creating this certificate, maybe mine is not the most optimal one, but it works!<br/>
+So... Lets get started.<br/>
+- [ ] under construction
 
 #### Configuring
 ##### Assigning a static ip for our computer
