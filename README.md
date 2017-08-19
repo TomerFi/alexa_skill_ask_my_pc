@@ -42,7 +42,7 @@ Please consider the instructions in this guide as guide lines only, following th
 I take no responsibility for any wrong doings on your computer made by yourself or any other.</br>
 If at any point you feel not sure or you're concern your personal security maybe breached, please stop following this guide, rollback any changes you might have made and if need, please contact an it expert to help you fix your computer's security.</br>
 
-This project is designed for personal use only, it's in no way a commercial skill, it is not meant profit from by me or any other. If you decide to try and profit of this skill, legal actions might be taken against you by the companies developing the tools and used in this guide.
+This project is designed for personal use only, it's in no way a commercial skill, it is not meant profit from by me or any other. If you decide to try and profit of this skill, legal actions might be taken against you by the companies developing the tools used in this project.
 
 ### Basic concept
 This is just a concept section, I will go through all the steps as clearly as I can in the following sections.
