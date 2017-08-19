@@ -208,11 +208,11 @@ Configuration tab, is where we define our skill endpoint:
 - *Provide geographical region endpoints*: No. Click *Save* and *Next*.
 
 SSL Certificate tab, is where we set up our certificate:
-- *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, becouse we are not going to go live with this skill, a self-signed certificate will suffice.
+- *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, because we are not going to go live with this skill, a self-signed certificate will suffice.
 - In the text box copy the all content of *.pem* file we've created with our self-singed certificate. This is the part where we ask the skill interface what is the certificate to present to our web service. Click *Save* and *Next*.
 
 Test tab, this is where we can test our skill.</br>
-Now, we can't test is yet becouse we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
+Now, we can't test is yet because we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
 Scroll down to the *Service Simulator* section and type whatever you want as an utterance (it's not going to work anyway) and click *Ask AskMyPc*.</br>
 Take a look at the *Service Request* window, find and write down the value of the *userId* parameter.
 
