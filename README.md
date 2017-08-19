@@ -225,7 +225,8 @@ Download this repository as a zip file and extract it wherever you want, open th
 
 with the application and user ids you wrote down [here](#setting-up-a-skill-interface-with-alexa) and save the file.</br>
 This is actually how we limit our skill to recieve requests only from our own skill and our own user.</br>
-Open a Command Prompt windows and navigate to location you've extracted the downloaded zip file, make sure you are in the same folder of the *pom.xml* file which in the maven instructions file on how to create the package.</br>
+
+Open a Command Prompt window and navigate to location you've extracted the downloaded zip file, make sure you are in the same folder of the *pom.xml* file which in the maven instructions file on how to create the package.</br>
 Type **mvn package**, if you did everything correctly you are suppose to see the package being build by Maven.</br>
 Once the build is finished and you see a *BUILD SUCCESS* message on the Command Prompt window, you can close this window and go back to the extracted zip file.</br>
 You should see a new folder created named *target*, open it and copy the following to your Tomcat server folder:
