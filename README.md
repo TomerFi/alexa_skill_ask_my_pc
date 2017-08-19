@@ -1,7 +1,11 @@
 # Alexa skill ask my pc<hr>
 Alexa custom skill written in java for opening files and web pages on a local computer running the skill as a web service with tomcat.
 You can check out the skill in action on my youtube channel [here](https://youtu.be/UMA1FSwb1pw).</br>
-This skill flow is the shortest one possible *Alexa enabled device \--> Alexa servers \--> Your local computer* which garuntees faster responses.</br>
+
+This skill flow is the shortest one possible:</br>
+*Alexa enabled device \--> Alexa servers \--> Your local computer*</br>
+which garuntees faster responses.</br>
+
 Please follow this guide as closely as you can to insure a working skill, I would recommend reading it thrugh before actually following it.
 
 ## Table Of Contents
