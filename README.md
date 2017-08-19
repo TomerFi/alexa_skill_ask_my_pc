@@ -139,11 +139,14 @@ We'll get back to configuring Tomcat later.
 Well, this part was actually the most fustrating part for me.<br/>
 I had now prior knowledge of creating or even using certificates before working on this project,<br/>
 There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
-But evnetually I found a way.<br/>
-There are a couple of diffrent ways creating this certificate, maybe mine is not the most optimal one, but it works!<br/>
+But evnetually I found a way, it may not be the most optimal one, but it works!<br/>
 So... Lets get started.<br/>
 
 ###### Creating the certificate
+Creating the certificate itself is prety straightforward, we're going to follow amazon's guide for creating a self-signed certificate, you can find it [here](#https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/testing-an-alexa-skill#create-a-private-key-and-self-signed-certificate-for-testing), and use *OpenSSL for Windows*, you can download the binary distribution [here](#http://gnuwin32.sourceforge.net/packages/openssl.htm).</br>
+Extract the downloaded *openssl* zip file, open a Command Prompt windows **with administrative privileges** (right click, run as administrator), navigate to the folder you've extracted the zip file to and into the subfolder *bin*.</br>
+Type in the following command to create a private key which will later on be in use by your web server:</br>
+*openssl genrsa -out private-key.pem 2048*
 
 #### Configuring
 ##### Assigning a static ip for our computer
@@ -226,7 +229,7 @@ Configuration tab, is where we define our skill endpoint:
 
 SSL Certificate tab, is where we set up our certificate:
 - *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, because we are not going to go live with this skill, a self-signed certificate will suffice.
-- In the text box copy the all content of *.pem* file we've created with our self-singed certificate. This is the part where we tell the skill interface what is the certificate to present to our web server. Click *Save* and *Next*.
+- In the text box copy the all content of *certificate.pem* file we've created [here](#creating-the-certificate). This is the part where we tell the skill interface what is the certificate will be presented to our web server. Click *Save* and *Next*.
 
 Test tab, this is where we can test our skill.</br>
 Now, we can't test is yet because we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
