@@ -20,6 +20,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
     - [Constructing our endpoint url](#constructing-our-endpoint-url)
 - [Creating our skill](#creating-our-skill)
   - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
+  - [Creating and deploying our skill](#creating-and-deploying-our-skill)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
@@ -189,7 +190,33 @@ This is your endpoint url, write it down and lets set up our skill interface.
 ### Creating our skill
 #### Setting up a skill interface with alexa
 Open your web browser and sign in your amazon developer account [here](https://developer.amazon.com/). If you don't have an account, create it.</br>
-Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skils Kit* section, then click *Add New Skill*.</br>
+Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skils Kit* section, then click *Add New Skill* and set up you skill like so:</br>
+Skill Information tab, is where we define how to invoke our skill. Fill in the next parameters, leave the rest as it is:
+- *Name*: AskMyPc, you can name the skill what ever you want, your not going to go live with this skill so it doesn't really matters.
+- *Invocation Name*: Computer, this is important, the invocation name is the way you ask alexa to start the skill. *Alexa, start computer*. If you don't want to use *Computer* as an invocation name, just make sure to take a look [here](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill#invocation-name-requirements) before choosing a good working invocation name.
+Click *Save* and write down your generated *Application Id*.</br>
+
+Interaction Model tab, is where we define how to interact with our skill:
+- *Intent Schema*: copy the content from the the file I've added to this project: [*speechAssets/intentSchema.json*](speechAssets/intentSchema.json). This is basicly just telling alexa what are the intents our code can handle.
+- *Custom Slot Types*: Type *LIST_OF_ACTIONS* to create a new custom slot which is mapped to the *StartAction* intent in the Intent Schema.
+- *Enter Values*: copy the content from the file I've added to this project: [*speechAssets/LIST_OF_ACTIONS.txt*](speechAssets/LIST_OF_ACTIONS.txt) to create a list of values valid for our custom slot and click *Add* to add the slot. Please note that this is just a basic default list I've created, once you get the skill working, you will be able to change it as much as you want.
+- *Sample Utterances*: copy the content from the file I've added to this project [*speechAssets/sampleUtterances.txt*](speechAssets/sampleUtterances.txt) and click *Save* and *Next*. this is actually the part where we teach alexa how to parse our sentences and phrases and tell where in the prase she should expect our custom slot value. You can add as many sample utterances as you want, the more the better, just try to confuse alexa with poorly built utterances.
+
+Configuration tab, is where we define our skill endpoint:
+- *Service Endpoint Type*: HTTPS.
+- *Default*: paste your endpoint url like you've constructed [here](#constructing-our-endpoint-url).
+- *Provide geographical region endpoints*: No. Click *Save* and *Next*.
+
+SSL Certificate tab, is where we set up our certificate:
+- *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, becouse we are not going to go live with this skill, a self-signed certificate will suffice.
+- In the text box copy the all content of *.pem* file we've created with our self-singed certificate. This is the part where we ask the skill interface what is the certificate to present to our web service. Click *Save* and *Next*.
+
+Test tab, this is where we can test our skill.</br>
+Now, we can't test is yet becouse we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
+Scroll down to the *Service Simulator* section and type whatever you want as an utterance (it's not going to work anyway) and click *Ask AskMyPc*.</br>
+Take a look at the *Service Request* window, find and write down the value of the *userId* parameter.
+
+#### Creating and deploying our skill
 
 
 ### Example settings of the skill
