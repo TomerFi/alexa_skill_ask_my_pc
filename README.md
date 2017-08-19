@@ -188,6 +188,9 @@ This is your endpoint url, write it down and lets set up our skill interface.
 
 ### Creating our skill
 #### Setting up a skill interface with alexa
+Open your web browser and sign in your amazon developer account [here](https://developer.amazon.com/). If you don't have an account, create it.</br>
+Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skils Kit* section, then click *Add New Skill*.</br>
+
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
