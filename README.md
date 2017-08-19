@@ -37,7 +37,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
 
 ### Release of liability
 This is not an official guide, it's just what I did to make this skill work.</br>
-Please consider the instructions in this guide as guide lines only, following them is on your own risk.</br>
+Please consider the instructions in this guide as guide lines only, following them is at your own risk.</br>
 I take no responsibility for any wrong doings on your computer made by yourself or any other.</br>
 If at any point you feel not sure or you're concern your personal security maybe breached, please stop following this guide, rollback any changes you might have made and if need, please contact an it expert to help you fix your computer's security.</br>
 This is in no way a commercial skill, it is not meant profit from by me or any other. If you decide to try and profit of this skill, legal actions might be taken against you by the companies developing the tools and used in this guide.
