@@ -26,7 +26,7 @@ You can check out the skill in action on my youtube channel [here](https://youtu
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
-- [Logs files](#logs-files)
+- [Log files](#log-files)
 
 
 ### Basic Concept
@@ -246,7 +246,7 @@ If you choose to work with the binary distributaion of tomcat like I did, and no
 ### Testing our skill
 Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the *Test* tab and scroll down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
 Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open facebook* in the testing tab, the result will be facebook opening up on the default browser on your computer.</br>
-Before leaving this guide, please take a look in [*Examples section*](#example-settings-of-the-skill) to understand how to configure your skill correctly and in the [*Logs section*](#logs-files) in order to understand how to read the log files if you'll ever need to.
+Before leaving this guide, please take a look in [*Examples section*](#example-settings-of-the-skill) to understand how to configure your skill correctly and in the [*Logs section*](#log-files) in order to understand how to read the log files if you'll ever need to.
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
@@ -265,7 +265,7 @@ Which means we can now ask alexa to tell our skill to open facebook.
 2- add the line **"facebook": "https://www.facebook.com/"** to our *conf_files/action_map.json* file.<br/>
 Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
 
-### Logs files
+### Log files
 If you followed this guide correctly, there are 3 logs avaialabe for your use. In the case of something not working properly, you can check this logs and find out how to fix it. These logs are at the server side, which means they only work as long as the request succesfully arrived from the alexa servers to your server. If something went wrong with the skill interface you will not see anything helpfull in these log files, in this case you will have to check your alexa app for any cards or try testing it with Test tab in the alexa developer portal to see what went wrong.</br>
 
 Navigate to your tomcat folder and open the subfolder calls *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
