@@ -154,9 +154,9 @@ And the path of the jks file in the *keystoreFile* property before saving.</br>
 
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.</br>
 For example, if your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
+Your Tomcat web server is now supporting https protocol and will present your self-signed certificate.</br>
 I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so:</br>
-\<!-- UNWANTED CONNECTOR \-->.</br>
-Your Tomcat web server is now supporting http protocol.
+\<!-- UNWANTED CONNECTOR \-->.
 
 #### Configuring Tomcat default host name
 This is not a must do step, you can skip it and it will not effect the skill activity at all.</br>
@@ -166,12 +166,20 @@ Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* pro
 #### Configuring Servlet and Servlet Mappings
 Now we need to map a pattern to our servlet, I know we didn't actually did the servlet part yet, so this maybe a little bit out of the blue, but bare with me.</br>
 We need to create a servlet reference for tomcat and map a url pattern to it.</br>
-Our servlet will eventually be *askmypc.AskMyPcServlet*, while *askmypc* as the package name and *AskMyPcServlet* as our servlet class name. And give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
+Our servlet class will eventually be *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
 After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*.</br>
 
 Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open the file *web.xml* and find the tag *web-app*.</br>
 Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) I've added to this project.</br>
 If you want to change the url pattern before coping the content, you can, just write down your selected pattern for later use.
+
+#### Constructing our endpoint url
+Now, before we can create our skill interface with alexa, lets prepare our endpoint url. The endpoint url will constructed like this:
+- the protocol we defined in our tom connector: *'https://'*
+- the dns name we got from NOIP: *'mydomainname.whatever'*
+- the port we've forwarded on our router: *':443'*
+- the url pattern we've mapped to our servlet: *'/askmypc'*
+The end result will be: *https://mydomainname.whatever:443/askmypc*
 
 ### Example settings of the skill
 #### Example 1: Alexa ask computer to start excel
