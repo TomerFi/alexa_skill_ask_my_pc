@@ -19,6 +19,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
     - [Installing Apache Tomcat](#installing-apache-tomcat)
     - [Creating a self-signed certificate](#creating-a-self-signed-certificate)
       - [Creating the certificate](#creating-the-certificate)
+      - [Creating the truststore](#creating-the-truststore)
   - [Configuring](#configuring)
     - [Assigning a static ip for our computer](#assigning-a-static-ip-for-our-computer)
     - [Forwarding port 443 towards our static ip](#forwarding-port-443-towards-our-static-ip)
@@ -138,17 +139,47 @@ We'll get back to configuring Tomcat later.
 ##### Creating a self-signed certificate
 Now we need to to create a self-signed certificate that will be presented by our web-server and accepted by alexa.</br>
 We'll split this task into two parts:</br>
-The first part will be creating the private-key certificate for our web server and the public certificate for alexa using *openSSL*, so that alexa's servers can identify our web server.</br>
-The second part will creating a keystore with *Java keygen* so that our Tomcat web server can present our certificate upon requests.<br>
-**Important Note:** all the certificate related files created in the following section, **should be stored in a secure place for your eyes only**, anyone who gets hold of this files can identify himself as your web server.
+The first part will be creating the private-key certificate, a configuration file and a public certificate for alexa using *openSSL*, so that alexa's servers can identify our web server with this certificate.</br>
+The second part will creating a truststore with *Java keytool* so that our Tomcat web server can present our certificate upon requests.<br>
+**Important Note:** all the certificate related files created in the following sections, **should be stored in a secure location for your eyes only**, anyone who gets a hold of this files can identify himself as your web server.
 
 ###### Creating the certificate
-Creating the certificate itself is prety straightforward, we're going to follow amazon's guide for creating a self-signed certificate, you can find it [here](#https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/testing-an-alexa-skill#create-a-private-key-and-self-signed-certificate-for-testing), and use *OpenSSL for Windows*, you can download the binary distribution [here](#http://gnuwin32.sourceforge.net/packages/openssl.htm).</br>
+Creating the certificate itself is prety straightforward, we're going to follow amazon's guide for creating a self-signed certificate, you can find it [here](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/testing-an-alexa-skill#create-a-private-key-and-self-signed-certificate-for-testing), and use *OpenSSL for Windows*, you can download the binary distribution [here](http://gnuwin32.sourceforge.net/packages/openssl.htm).</br>
 Extract the downloaded *openssl* zip file wherever you see fit, open a Command Prompt windows **with administrative privileges** (right click, run as administrator), navigate to the folder you've extracted the zip file to and go into the subfolder *bin*.</br>
 Type in the following command to create a private key which will later on be in use by your web server:</br>
 *openssl genrsa -out private-key.pem 2048*<br>
 A private key certificate called *private-key.pem* is now created inside the *bin* folder.</br>
-Go into the *bin* folder an create a file called *configuration.cnf* and inside 
+
+Copy the [*configuration.cnf*](configuration.cnf) (taken from amazon's guide) I've added to this repository into the *bin* with the newly created *private-key.pem* file and open the it in any text editor.</br>
+The most important part here is to replace the value of *DNS.1* with the dns static name received from *NOIP* otherwise the the incoming requests towards this dns name won't be abla to identify your web server with the created certificate.</br>
+You also need to update the following parameters:
+- ST: Provide your two letter state abbreviation
+- L: Provide the name of the city in which you are located
+- O: Provide a name for your organization
+- CN: Provide a name for the skill
+
+When you done editing the cnf file, save it and get back to the Command Prompt windows, if its closed, re-open it (as administrator) and navigate again to the *bin* folder and run the following command in order to create a public certificate based on your *private-key.pem* and *configuration.cnf* files:</br>
+*openssl req -new -x509 -days 365 -key private-key.pem -config configuration.cnf -out certificate.pem*</br>
+This will create a public certificate called *certificate.pem* inside the *bin* folder. The certificate is valid for 365 days (you can change the validation limit if you want) and this will be the certificate file we'll update in the [skill interface section](#setting-up-a-skill-interface-with-alexa) so that alexa's servers can identify our web server.
+
+###### Creating the truststore
+We need to create a truststore from our certificate to be used by our Tomcat web server. This will be accomplished using the *Java keytool* which is included in our *JDK* installation and the *openSSL* tool we used to create the certificate. We'll follow [Oracle's guide](https://docs.oracle.com/cd/E35976_01/server.740/es_admin/src/tadm_ssl_convert_pem_to_jks.html).</br>
+
+The first thing we need to do is convert the created *certificate.pem* file into a *.pkcs12* which is acceptable by the standarts of the java truststore. Open a Command Prompt windows **with administrative privileges** (right click, run as administrator) and navigate to the *bin* folder inside you *openSSL* distribution which for now also hold the private-key, configuration file and certificate we created in the prior section, type:</br>
+*openssl pkcs12 -export -out certificate.pkcs12 -in certificate.pem*</br>
+This will generate a *certificate.pkcs12* file in openssl's bin subfolder. This will be the certificate presented by our web server, to accomplished that we will need to create a Java Truststore (jks file) and import and *certificate.pkcs12* into it.</br>
+
+Navigate windows explorer to *%java_home%\bin* (start --> run) and move the created *certificate.pkcs12* into it. At this point I advice you to move the other three files from openssl's bin folder (private-key, configuration, certificate) to a secure folder accessible only to you.</br>
+Open a Command Prompt windows **with administrative privileges** (right click, run as administrator) and type *cd %java_home%\bin* and press enter, this will navigate to the bin folder inside your jdk's installation.</br>
+Now we need to create a *truststore*, empty it, and import our pkcs12 file into it. To create the initial truststore type:</br>
+*keytool -genkey -keyalg RSA -alias endeca -keystore keystore.ks*</br>
+When creating the keystore file you will be asked to enter your personal data, you can enter whatever you want, it doesn't really matters because we're going to empty the store, the only thing thats actually matters at this point is your *keystore password* which will be used by Tomcat to access the keystore, **write it down**.</br>
+Once done, this will generate a keystore.ks file inside jdk's bin subfolder, now lets empty it using the following command:</br>
+*keytool -delete -alias endeca -keystore keystore.ks*</br>
+After emptying the keystore, lets import our pkcs12 file:</br>
+keytool -v -importkeystore -srckeystore certificate.pkcs12 -srcstoretype PKCS12 -destkeystore keystore.ks -deststoretype JKS</br>
+Now change the type of your keystore from ks to jks, keystore.ks will become keystore.jks. This will be the store referenced from our Tomcat server.</br>
+Move the *keystore.jks* file and the *certificate.pkcs12* to a secure folder accessible only to you, please note the only file need to accesible by Tomcat is the *keystore.jks* file.
 
 #### Configuring
 ##### Assigning a static ip for our computer
