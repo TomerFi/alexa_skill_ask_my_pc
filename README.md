@@ -136,17 +136,19 @@ Variable value: the folder you've extracted from the zip file, in my case its *E
 We'll get back to configuring Tomcat later.
 
 ##### Creating a self-signed certificate
-Well, this part was actually the most fustrating part for me.<br/>
-I had now prior knowledge of creating or even using certificates before working on this project,<br/>
-There were even a couple of times I felt like quiting this project because of my difficulties overcoming this part,<br/>
-But evnetually I found a way, it may not be the most optimal one, but it works!<br/>
-So... Lets get started.<br/>
+Now we need to to create a self-signed certificate that will be presented by our web-server and accepted by alexa.</br>
+We'll split this task into two parts:</br>
+The first part will be creating the private-key certificate for our web server and the public certificate for alexa using *openSSL*, so that alexa's servers can identify our web server.</br>
+The second part will creating a keystore with *Java keygen* so that our Tomcat web server can present our certificate upon requests.<br>
+**Important Note:** all the certificate related files created in the following section, **should be stored in a secure place for your eyes only**, anyone who gets hold of this files can identify himself as your web server.
 
 ###### Creating the certificate
 Creating the certificate itself is prety straightforward, we're going to follow amazon's guide for creating a self-signed certificate, you can find it [here](#https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/testing-an-alexa-skill#create-a-private-key-and-self-signed-certificate-for-testing), and use *OpenSSL for Windows*, you can download the binary distribution [here](#http://gnuwin32.sourceforge.net/packages/openssl.htm).</br>
-Extract the downloaded *openssl* zip file, open a Command Prompt windows **with administrative privileges** (right click, run as administrator), navigate to the folder you've extracted the zip file to and into the subfolder *bin*.</br>
+Extract the downloaded *openssl* zip file wherever you see fit, open a Command Prompt windows **with administrative privileges** (right click, run as administrator), navigate to the folder you've extracted the zip file to and go into the subfolder *bin*.</br>
 Type in the following command to create a private key which will later on be in use by your web server:</br>
-*openssl genrsa -out private-key.pem 2048*
+*openssl genrsa -out private-key.pem 2048*<br>
+A private key certificate called *private-key.pem* is now created inside the *bin* folder.</br>
+Go into the *bin* folder an create a file called *configuration.cnf* and inside 
 
 #### Configuring
 ##### Assigning a static ip for our computer
