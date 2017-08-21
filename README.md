@@ -66,7 +66,8 @@ The Alexa Skill Kit for Java handles all of those requirements for us. You can r
 
 The skill interface needs to be configured with your modem ip address as an Https Endpoint,<br/>
 So, if you don't want to update the skill interface with the new ip address of your modem every time your isp changes it,<br/>
-Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in NOIP's servers. Besides easying the access to your computer, a dns name is included in the requierd certificate, which means that if you don't use a static name, not only will you have to update you skill interface with the new ip, you'll also gonna have to update your certificate both on the server side and on the client side.
+Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in NOIP's servers.</br>
+Besides easying the access to your computer, your dns name will also be included in the requierd certificate, which means that if you don't use a static name, not only will you have to update you skill interface with the new ip, you'll also gonna have to update your certificate both on the server side and on the client side.
 
 The skill's invocation word is Computer, but you can use whatever invocation word or phrase you want,<br/>
 Just remember that it's supposed to intuitive and that alexa needs to understand you.
