@@ -229,9 +229,12 @@ And the path of the jks file in the *keystoreFile* property.</br>
 
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.</br>
 For example, if your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
+
 Your Tomcat web server is now supporting https protocol and will present your self-signed certificate upon each incoming request in https protocol with the port 443.</br>
+
 I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so:</br>
-\<!-- UNWANTED CONNECTOR \-->.
+\<!-- UNWANTED CONNECTOR \-->.</br>
+Uncommenting is just a recommendation, this it not a "must do" step, if you're unsure, it's better to skip this part then to damage the xml syntax. 
 
 ##### Configuring Tomcat default host name
 This is not a must do step, you can skip it and it will not effect the skill activity at all.</br>
