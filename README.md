@@ -244,8 +244,9 @@ Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* pro
 ##### Configuring Servlet and Servlet Mappings
 Now that all incoming requests in https protocol with the port 443 will reach our web server that will present our certificate, we need to tell our web server what to do with these requests. We want our tomcat server to direct this requests towards our skill.</br>
 
-Our skill is actually a java class which extends amazon's SpeechletServlet class which implements a java ee servlet. Our servlet class name will be *AskMyPcServlet* and it will reside inside a package called *askmypc* which makes our qualified class name *askmypc.AskMyPcServlet* **write it down**. Our servlet's only job will be to create a new instance of our speechlet class which implements amazon's Speechlet Class.</br>
-Our speechlet class will be called *AskMyPcSpeechlet* and it will reside inside the same package as our servlet. **The speechlet is the code behind our skill** and it was written based on and using the [Alexa Skills Kit for Java](https://github.com/amzn/alexa-skills-kit-java)</br>
+Our skill is actually a java class which extends amazon's SpeechletServlet class which implements a java ee servlet. Our servlet class name will be *AskMyPcServlet* and it will reside inside a package called *askmypc* which makes our qualified class name *askmypc.AskMyPcServlet* **write it down**.</br>
+Our servlet's only job will be to create a new instance of our speechlet class which implements amazon's Speechlet Class.</br>
+Our speechlet class will be called *AskMyPcSpeechlet* and it will reside inside the same package as our servlet. **Our AskMyPcSpeechlet class is the code behind our skill** and it was written based on and using the [Alexa Skills Kit for Java](https://github.com/amzn/alexa-skills-kit-java)</br>.
 
 Now, we're not creating the skill yet, this is just the part where we tell our web server where to direct incoming requests to.
 In order to do that, we need to create a servlet reference for tomcat and map a url pattern to it.</br>
