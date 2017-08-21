@@ -215,7 +215,7 @@ Please note, this ip address is inside your lan only, it means nothing outside o
 ##### Forwarding port 443 towards our static ip
 Now that your computer has a static ip address, we can forward all incoming requests with the port 443 towards it.</br>
 Open your router's gui on your favorite web browser, the same as we did in the static ip section.</br>
-Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to the static ip you've assigned for your computer.</br>
+Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to the static ip you've assigned to your computer.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our computer accept these requests, in the next section.
 
 ##### Configuring Tomcat for https support
@@ -299,7 +299,7 @@ Configuration tab, is where we define our skill endpoint:
 
 SSL Certificate tab, is where we set up our certificate:
 - *Certificate for DEFAULT Endpoint*: I will upload a self-signed certificate in X.509 format. Again, because we are not going to go live with this skill, a self-signed certificate will suffice.
-- In the text box copy the all content of *certificate.pem* file we've created [here](#creating-the-certificate). This is the part where we tell the skill interface what is the certificate will be presented to our web server. Click *Save* and *Next*.
+- In the text box copy **all** the content of *certificate.pem* file we've created [here](#creating-the-certificate) (including the *----BEGIN CERTIFICATE----* and the *-----END CERTIFICATE-----* parts). This is the part where we tell the skill interface what is the certificate will be presented to our web server. Click *Save* and *Next*.
 
 Test tab, this is where we can test our skill.</br>
 Now, we can't test is yet because we have'nt finished it yet, but we need to get our user id for finishing up our skill, so if you don't know it already, this is the fastest way I know how to get it.</br>
