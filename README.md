@@ -250,7 +250,7 @@ Our speechlet class will be called *AskMyPcSpeechlet* and it will reside inside 
 
 Now, we're not creating the skill yet, this is just the part where we tell our web server where to direct incoming requests to.
 In order to do that, we need to create a servlet reference for tomcat and map a url pattern to it.</br>
-Our servlet class qualified name *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We need to give our servlet a name, the name can be what ever you want, think og it as a reference name. For now, the reference name will be *AskMyPc* and it will be mapped to our servlet class.</br>
+Our servlet class qualified name *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We need to give our servlet a name, the name can be what ever you want, think of it as a reference name. For now, the reference name will be *AskMyPc* and it will be mapped to our servlet class.</br>
 After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*. We need to map our url pattern to the reference name of our servlet class.</br>
 
 Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open the file *web.xml* and find the tag *web-app*.</br>
