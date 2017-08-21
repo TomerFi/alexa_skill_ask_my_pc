@@ -365,9 +365,15 @@ In this log file you can see all the requests to you web server and response cod
 - The second log file name is *AskMyPc.yyyy-mm-dd.log*.</br>
 This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
 Please note that if a request reached your web server but was not directed to your skill, you will only see the request and response code in the first log and not here.</br>
-In this log you can see details of every interaction with the skill, you will see rather or not the request passed the validation part and what exactrly happend thrugh the interaction from start to end. Each raw will contain a session id which is unique per each session created, so you will be able to differ one interation from another.
+In this log you can see details of every interaction with the skill, you will see rather or not the request passed the validation part and what exactly happend thrugh out the interaction from start to end. Each raw will contain a session id which is unique per each session created, so you will be able to differ one interaction from another.
 
 - The third log file name is *AskMyPc.error.log* and it will contain the stack trace for every error occurring in the skill.</br>
 This is the only log not daily rolled.
 
 You can delete all 3 logs if you need to, the skill will simply create new ones on its next invocation or start-up.
+
+### Summary
+Congratulations, you now have a working skill hosted on your local computer runing Tomcat as an https endpoint server for alexa.</br>
+You can use the hosting server infrastructure you created here to create more skills hosted on your computer, if so, please share any cool projects or skills you may create with the rest of the world, like I did in this project.</br>
+
+Have a good day. :-)
