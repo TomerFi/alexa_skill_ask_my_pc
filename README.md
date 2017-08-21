@@ -375,6 +375,7 @@ You can delete all 3 logs if you need to, the skill will simply create new ones 
 
 ### Summary
 Congratulations, you now have a working skill hosted on your local computer runing Tomcat as an https endpoint server for alexa.</br>
-You can use the hosting server infrastructure you created here to create more skills hosted on your computer, if so, please share any cool projects or skills you may create with the rest of the world, like I did in this project.</br>
+You can use the hosting server infrastructure you've created here to create more skills hosted on your computer, if so, please share any cool projects or skills you may create with the rest of the world, like I did with this project.</br>
 
-Have a good day. :-)
+Have a good day.</br>
+:-)
