@@ -214,12 +214,12 @@ Please note, this ip address is inside your lan only, it means nothing outside o
 
 ##### Forwarding port 443 towards our static ip
 Now that your computer has a static ip address, we can forward all incoming requests with the port 443 towards it.</br>
-Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
+Open your router's gui on your favorite web browser, the same as we did in the static ip section.</br>
 Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to the static ip you've assigned for your computer.</br>
-Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our can computer accept those requests, in the next section.
+Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our computer accept these requests, in the next section.
 
 ##### Configuring Tomcat for https support
-Now that we know all incoming requests with the port 443 will be forwarded from our router to our computer, we need to tell our web server to accept those requests. We need to make our Tomcat web server support https protocol and present our certificate for all incoming requests. In order to do that, we need to define a Connector.</br>
+Now that we know all incoming requests with the port 443 will be forwarded from our router to our computer, we need to tell our web server to accept these requests. We need to make our Tomcat web server support https protocol and present our certificate for all incoming requests. In order to do that, we need to define a Connector.</br>
 Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br>
 
 Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) I've added to this project, just edit its content and copy it the full content to the *server.xml* file.</br>
