@@ -318,8 +318,9 @@ Type **mvn package**, if you did everything correctly you are suppose to see the
 Once the build is finished and you see a *BUILD SUCCESS* message on the Command Prompt window, you can close this window and go back to the extracted zip file.</br>
 You should see a new folder created named *target*, open it and copy the following to your Tomcat server folder:
 - Copy the file *AskMyPc-1.0.0.jar* to the folder *webapps/ROOT/WEB-INF/lib*. This is the skill itself.
-- Copy the folder *conf_files* to the folder *webapps/ROOT/WEB-INF*. This folder holds the configuration file you'll use to map actions to slot values. I've added a couple of examples for this configutarion file [here](#example-settings-of-the-skill).
-That's it. You skill is now deployed to your web server, not we need to start the server.</br>
+- Copy the folder *conf_files* to the folder *webapps/ROOT/WEB-INF*. This folder holds the configuration file you'll use to map actions to slot values. I've added a couple of examples for this configutarion file [here](#example-settings-of-the-skill).</br>
+
+That's it. Your skill is now deployed to your web server, now we need to start our web server.</br>
 
 You can now delete the extracted zip file of this repository, you have no need for it anymore.
 
