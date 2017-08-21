@@ -337,6 +337,7 @@ Try saying: *Alexa, ask computer to open facebook* or type *ask computer to open
 Before leaving this guide, please take a look in [*Examples section*](#example-settings-of-the-skill) to understand how to configure your skill correctly and in the [*Logs section*](#log-files) in order to understand how to read the log files if you'll ever need to.
 
 ### Example settings of the skill
+When editing the *conf_files/action_map.json*, I would advice you to use [JSONLint](https://jsonlint.com/) and validate the json syntax before saving it.
 #### Example 1: Alexa ask computer to start excel
 For that purpose, we will:<br/>
 1- add **excel** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
