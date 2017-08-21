@@ -222,7 +222,7 @@ Depending on the router, you might be asked to reboot it. Go ahead and reboot it
 Now that we know all incoming requests with the port 443 will be forwarded from our router to our computer, we need to tell our web server to accept these requests. We need to make our Tomcat web server support https protocol and present our certificate for all incoming requests. In order to do that, we need to define a Connector.</br>
 Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br>
 
-Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) I've added to this project, just edit its content and copy it the full content to the *server.xml* file.</br>
+Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) file I've added to this project, just edit its content and copy its full content to the *server.xml* file.</br>
 
 Before saving the *server.xml* file make sure to update your chosen keystore password in the *keystorePass* property,</br>
 And the path of the jks file in the *keystoreFile* property.</br>
