@@ -28,6 +28,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
     - [Configuring Tomcat default host name](#configuring-tomcat-default-host-name)
     - [Configuring Servlet and Servlet Mappings](#configuring-servlet-and-servlet-mappings)
     - [Constructing our endpoint url](#constructing-our-endpoint-url)
+    - [Configuring summary](#configuring-summary)
 - [Creating our skill](#creating-our-skill)
   - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
   - [Creating and deploying our skill](#creating-and-deploying-our-skill)
@@ -40,7 +41,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
 
 ### Release of liability
 This is not an official guide, I just wrote about what I did to make this skill work, so other people who want to can do the same.</br>
-Please consider the instructions in this guide as guide lines only, following them is at your own risk.</br>
+Please consider the instructions in this guide as guidelines only, following them is at your own risk.</br>
 I take no responsibility for any wrong doings on your computer made by yourself or any other.</br>
 If at any point you feel not sure or you're concern your personal security maybe breached, please stop following this guide, rollback any changes you might have made and if need, please contact an it expert to help you fix your computer security.</br>
 This project is designed for personal use only, it's in no way a commercial skill, it is not meant to profit from by me or any other.
@@ -188,7 +189,7 @@ If you got to this point of the guide, you now have:
 - A static dns name from NOIP which will be used to send requests towards your computer.
 - A fully configured JDK installation that will allow you to work with Maven.
 - A fully configured Maven distribution that will allow you to package your project.
-- A (not yet configured) Tomcat distribution that will act as your web server.
+- A (not yet configured) Tomcat distribution that will act as your web server and process all incoming requests.
 - A self-signed x509 public certificate that will help alexa's servers identify your web server (*certificate.pem*).
 - A Java Truststore file which holds your certificate in it and will be accessed with your selected password by your web server (*keystore.jks*).
 
@@ -196,35 +197,39 @@ If only some or none of the above sounds familiar to you, you might want to go b
 
 #### Configuring
 ##### Assigning a static ip for our computer
-This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Ling AC1750 router, which is what I'm using.<br/>
+The first thing we'll have to do is giving our computer a permanent ip so that we can direct all incoming requests with the port 443 to it.</br>
+This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Link AC1750 router, which is what I'm using.<br/>
 But if you use a diffrent router, well... you're going to have to do this part on your own.<br/>
-But don't worry, I'll give you the guidlines.<br/>
+But don't worry, I'll give you the guidelines.<br/>
 First of all, open up a Command Prompt windows and type *ipconfig /all*, identify your ethernet adapter and take note of the following:<br/>
-Physical Address - is the mac address you're going to assign the static ip to on your router.<br/>
-IPv4 Address - is the ip you're going to assign to the mac address on your router.<br/>
+Physical Address - is the mac address you're going to assign the static ip to on your router. You can look at it as the name of your computer.<br/>
+IPv4 Address - is the ip address assign to your computer dynamiclly by your router, you're going to assign it to the mac address on your router as a static ip.<br/>
 Default Gateway - is the ip address of your router, from your router's gui you will configure the static ip.<br/>
+
 Now, open your favorite web browser and type the ip address of your router, which is the default gateway address we noted earlier.</br>
 Type your user name and password if asked. If you don't know the user name and password, check under the router for a sticker indicating the default ones, if you can't find it, you'll have to dig around in google for your router's manufacture name and model, you'll probably find it listed somewhere. Once you're inside, it's highly recommended changing the password to something more private then default one.</br>
-Now, look for anything related to *Address Reservation* or *Static IP* and create a record with your computer's mac address and the ip address you wrote down earlier.</br>
+Now, look for anything related to *Address Reservation* or *Static IP* and create a record with your computer's mac and the ip addresses you wrote down earlier.</br>
 Depending on the router, you might be asked to reboot it. Go ahead and reboot it and your computer will receive a static ip address once you're done.</br>
 Please note, this ip address is inside your lan only, it means nothing outside of your home.
 
 ##### Forwarding port 443 towards our static ip
+Now that your computer has a static ip address, we can forward all incoming requests with the port 443 towards it.</br>
 Open your router's gui on your favorite web browser, the same as in the static ip section.</br>
-Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to static ip you've assigned for your computer.</br>
-Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our computer accept those requests, in the next section.
+Look for anything related to *Port Forwarding* or *Virtual Servers* and create a record directing the port 443 to the static ip you've assigned for your computer.</br>
+Depending on the router, you might be asked to reboot it. Go ahead and reboot it and once you're done, your router will redirect all incoming requests with the port 443 towards your computer. Now we need to make our can computer accept those requests, in the next section.
 
 ##### Configuring Tomcat for https support
-Now we need to make our Tomcat web server support https protocol. In order to do that, we need to define a Connector.</br>
-Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br></br>
+Now that we know all incoming requests with the port 443 will be forwarded from our router to our computer, we need to tell our web server to accept those requests. We need to make our Tomcat web server support https protocol and present our certificate for all incoming requests. In order to do that, we need to define a Connector.</br>
+Go to the tomcat folder, wherever you've extracted it, go into the *conf* subfolder and open the file server.xml in any text editor.</br>
+
 Find the *Service* tag and add an https connector right under it. You can find an example of the connector in the [*http_connector.xml*](http_connector.xml) I've added to this project, just edit its content and copy it the full content to the *server.xml* file.</br>
 
-Just make sure to update your chosen keystore password in the *keystorePass* property,</br>
-And the path of the jks file in the *keystoreFile* property before saving.</br>
+Before saving the *server.xml* file make sure to update your chosen keystore password in the *keystorePass* property,</br>
+And the path of the jks file in the *keystoreFile* property.</br>
 
 As far as the path goes, the path is relative and you can't use windows syntax, instead of '\\' use '/'.</br>
 For example, if your jks file is in the *conf* folder inside the *tomcat* folder, and your file name is *keystore.jks*, your path will be */conf/keystore.jks*.</br>
-Your Tomcat web server is now supporting https protocol and will present your self-signed certificate.</br>
+Your Tomcat web server is now supporting https protocol and will present your self-signed certificate upon each incoming request in https protocol with the port 443.</br>
 I just want to recommend that you will comment out any other connectors that might be open. It doesn't really has anything to do with this skill, and it doesn't really matters what connectors you have open if you didn't forwarded their port on the router, it's just security tip. You can comment out the connectors by surround the connector like so:</br>
 \<!-- UNWANTED CONNECTOR \-->.
 
@@ -234,14 +239,20 @@ Nevertheless, I would recommend doing it for better log records.</br>
 Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
 
 ##### Configuring Servlet and Servlet Mappings
-Now we need to map a pattern to our servlet, I know we didn't actually did the servlet part yet, so this maybe a little bit out of the blue, but bare with me.</br>
-We need to create a servlet reference for tomcat and map a url pattern to it.</br>
-Our servlet class will eventually be *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We give our servlet a name, the name can be what ever you want. For now, the name will be *AskMyPc*.</br>
-After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*.</br>
+Now that all incoming requests in https protocol with the port 443 will reach our web server that will present our certificate, we need to tell our web server what to do with these requests. We want our tomcat server to direct this requests towards our skill.</br>
+
+Our skill is actually a java class which extends amazon's SpeechletServlet class which implements a java ee servlet. Our servlet class name will be *AskMyPcServlet* and it will reside inside a package called *askmypc* which makes our qualified class name *askmypc.AskMyPcServlet* **write it down**. Our servlet's only job will be to create a new instance of our speechlet class which implements amazon's Speechlet Class.</br>
+Our speechlet class will be called *AskMyPcSpeechlet* and it will reside inside the same package as our servlet. **The speechlet is the code behind our skill** and it was written based on and using the [Alexa Skills Kit for Java](https://github.com/amzn/alexa-skills-kit-java)</br>
+
+Now, we're not creating the skill yet, this is just the part where we tell our web server where to direct incoming requests to.
+In order to do that, we need to create a servlet reference for tomcat and map a url pattern to it.</br>
+Our servlet class qualified name *askmypc.AskMyPcServlet*, while *askmypc* is the package name and *AskMyPcServlet* is our servlet class name. We need to give our servlet a name, the name can be what ever you want, think og it as a reference name. For now, the reference name will be *AskMyPc* and it will be mapped to our servlet class.</br>
+After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*. We need to map our url pattern to the reference name of our servlet class.</br>
 
 Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open the file *web.xml* and find the tag *web-app*.</br>
 Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) I've added to this project.</br>
-If you want to change the url pattern before coping the content, you can, just write down your selected pattern for later use.
+If you want to change the url pattern before copying the content, you can, just **write down** your selected pattern for later use.</br>
+Once you're done, you may not have a working skill yet, but you do have an endpoint url for it.
 
 ##### Constructing our endpoint url
 Now, before we can create our skill interface with alexa, lets prepare our endpoint url. The endpoint url will constructed like this:
@@ -252,6 +263,15 @@ Now, before we can create our skill interface with alexa, lets prepare our endpo
 
 The end result will be something like: *https://mydomainname.whatever:443/askmypc*</br>
 This is your endpoint url, write it down and lets set up our skill interface.
+
+##### Configuring summary
+If you made it here, you now have:
+- A router configured to forward all incoming requests with the port 443 to your web server.
+- A fully working static named web server that accepts and handles requests in https protocol with port 443 and presents a self-signed certificate.
+- A url pattern mapped to a servlet class for handling all requests.
+- An endpoint url which will direct request from all over the world to your web server.
+
+If only some or none of the above sounds familiar to you, you might want to go back to the appropriate section before continuing to skill creating section.
 
 ### Creating our skill
 #### Setting up a skill interface with alexa
