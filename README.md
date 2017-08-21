@@ -308,11 +308,10 @@ Take a look at the *Service Request* window, find and **write down the value of 
 
 #### Creating and deploying our skill
 Download this repository as a zip file and extract it wherever you want, open the folder *src, main, java, askmypc* and open the file *AskMyPcSpeechlet.java* in any text editor:
-- Edit the value of *APPLICATIONID*
-- Edit the value of *USERID*
+- Edit the value of *APPLICATIONID* with the application id you wrote down.
+- Edit the value of *USERID* with the user id you wrote down.
 
-with the application and user ids you wrote down [here](#setting-up-a-skill-interface-with-alexa) and save the file.</br>
-This is actually how we limit our skill to recieve requests only from our own skill and our own user.</br>
+This is actually how we limit our skill to recieve requests only from our own skill and our own user, save the file.</br>
 
 Open a Command Prompt window and navigate to location you've extracted the downloaded zip file, make sure you are in the same folder of the *pom.xml* file which is the maven instructions file for how to create the package.</br>
 Type **mvn package**, if you did everything correctly you are suppose to see the package being build by Maven.</br>
