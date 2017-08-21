@@ -359,11 +359,12 @@ If you followed this guide correctly, there are 3 logs avaialabe for your use. I
 
 Navigate to your tomcat folder and open the subfolder called *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
 - The first log file name is the name of your dns name prefixed with *_access_log.yyyy-mm-dd.txt*.</br>
-This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
+This is a daily rolled log, which means that there is a log for each day a request reached your server.</br>
 In this log file you can see all the requests to you web server and response codes from you web server.
 
 - The second log file name is *AskMyPc.yyyy-mm-dd.log*.</br>
 This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
+Please note that if a request reached your web server but was not directed to your skill, you will only see the request and response code in the first log and not here.</br>
 In this log you can see details of every interaction with the skill, you will see rather or not the request passed the validation part and what exactrly happend thrugh the interaction from start to end. Each raw will contain a session id which is unique per each session created, so you will be able to differ one interation from another.
 
 - The third log file name is *AskMyPc.error.log* and it will contain the stack trace for every error occurring in the skill.</br>
