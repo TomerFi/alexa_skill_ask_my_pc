@@ -357,7 +357,7 @@ Which means that for every time our skill receives the action named google, the 
 ### Log files
 If you followed this guide correctly, there are 3 logs avaialabe for your use. In the case of something not working properly, you can check this logs and find out how to fix it. These logs are at the server side, which means they only work as long as the request succesfully arrived from the alexa servers to your server. If something went wrong with the skill interface you will not see anything helpfull in these log files, in this case you will have to check your alexa app for any cards or try testing it with Test tab in the alexa developer portal to see what went wrong.</br>
 
-Navigate to your tomcat folder and open the subfolder calls *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
+Navigate to your tomcat folder and open the subfolder called *logs*, in this folder you will see all of the tomcat log files, but for our skill there 3 logs in particualr:
 - The first log file name is the name of your dns name prefixed with *_access_log.yyyy-mm-dd.txt*.</br>
 This is a daily rolled log, which means that there is a log for each day the skill was invoked.</br>
 In this log file you can see all the requests to you web server and response codes from you web server.
