@@ -260,13 +260,13 @@ Once you're done, you may not have a working skill yet, but you do have an endpo
 
 ##### Constructing our endpoint url
 Now, before we can create our skill interface with alexa, lets prepare our endpoint url. The endpoint url will constructed like this:
-- the protocol we've defined in our tom connector: *https://*
-- the dns name we got from NOIP: *mydomainname.whatever*
-- the port we've forwarded on our router: *:443*
-- the url pattern we've mapped to our servlet: */askmypc*
+- the protocol we've defined in our tom connector: '*https://*'
+- the dns name we got from NOIP: '*mydomainname.whatever*'
+- the port we've forwarded on our router: '*:443*'
+- the url pattern we've mapped to our servlet: '*/askmypc*'
 
 The end result will be something like: *https://mydomainname.whatever:443/askmypc*</br>
-This is your endpoint url, write it down and lets set up our skill interface.
+This is your endpoint url, **write it down** and lets set up our skill interface.
 
 ##### Configuring summary
 If you made it here, you now have:
