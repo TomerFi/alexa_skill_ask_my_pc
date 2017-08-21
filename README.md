@@ -329,7 +329,7 @@ Navigate to your tomcat folder and open the subfolder called *bin*. You will fin
 - *startup.bat* to start your server.
 - *shutdown.bat* to stop your server.
 
-If you choose to work with the binary distributaion of tomcat like I did, and not as a windows service. The web server won't start itself when you computer boot up, you'll have to run the *startup.bat* file manually or create some kind of schedule for it. I just prefered creating a shortcut on my desktop and double clicking it whenever I want the server running, I actually never shutdown my pc, so the server is always on anyways.
+If you choose to work with the binary distributaion of tomcat like I did, and not as a windows service. The web server won't start itself when you computer boots up, you'll have to run the *startup.bat* file manually or create some kind of schedule for it. I just prefered creating a shortcut on my desktop and double clicking it whenever I want the server running, I actually never shutdown my pc, so the server is always on anyways.
 
 ### Testing our skill
 Well, actually if you got this far, your skill is already working, so you can just say *Alexa, start my computer* to invoke the skill or you can go back to amazon devloper portal like we did [here](#setting-up-a-skill-interface-with-alexa), go into the *Test* tab and scroll down to the *Service Simulator*, type *start computer* (or whatever invocation phrase you chosed) and you can see the reply from your web server.</br>
