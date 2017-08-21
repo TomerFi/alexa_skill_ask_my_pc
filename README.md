@@ -29,7 +29,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
     - [Configuring Servlet and Servlet Mappings](#configuring-servlet-and-servlet-mappings)
     - [Constructing our endpoint url](#constructing-our-endpoint-url)
     - [Configuring summary](#configuring-summary)
-- [Creating our skill](#creating-our-skill)
+- [Creating and starting our skill](#creating-and-starting-our-skill)
   - [Setting up a skill interface with alexa](#setting-up-a-skill-interface-with-alexa)
   - [Creating and deploying our skill](#creating-and-deploying-our-skill)
   - [Start Tomcat web server](#start-tomcat-web-server)
@@ -277,7 +277,7 @@ If you made it here, you now have:
 
 If only some or none of the above sounds familiar to you, you might want to go back to the appropriate section before continuing to skill creating section.
 
-### Creating our skill
+### Creating  and starting our skill
 #### Setting up a skill interface with alexa
 Open your web browser and sign in with your amazon developer account [here](https://developer.amazon.com/). If you don't have an account, create it.</br>
 Once you're in, click *Alexa* and then click *Get Started* in the *Alexa Skills Kit* section, then click *Add New Skill* and set up you skill like so:</br>
