@@ -36,7 +36,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
 - [Testing our skill](#testing-our-skill)
 - [Example settings of the skill](#example-settings-of-the-skill)
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
-  - [Example 2: Alexa ask computer to open facebook](#example-2-alexa-ask-computer-to-open-facebook)
+  - [Example 2: Alexa ask computer to open google](#example-2-alexa-ask-computer-to-open-google)
 - [Log files](#log-files)
 
 ### Release of liability
@@ -344,15 +344,15 @@ For that purpose, we will:<br/>
 Which means we can now ask alexa to tell our skill to open excel.
 
 2- add the line **"excel": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE"** to our *conf_files/action_map.json* file.<br/>
-Which means that for every time the skill receives the action named excel, the skill will then open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
+Which means that for every time our skill receives the action named excel, the skill will then open C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE.
 
-#### Example 2: Alexa ask computer to open facebook
+#### Example 2: Alexa ask computer to open google
 For that purpose, we will:<br/>
-1- add **facebook** to the *LIST_OF_ACTIONS* custom slot ype and save our skill interface.<br/>
-Which means we can now ask alexa to tell our skill to open facebook.
+1- add **google** to the *LIST_OF_ACTIONS* custom slot type and save our skill interface.<br/>
+Which means we can now ask alexa to tell our skill to open google.
 
-2- add the line **"facebook": "https://www.facebook.com/"** to our *conf_files/action_map.json* file.<br/>
-Which means that for every time the skill receives the action named facebook, the skill will then open https://www.facebook.com/ in our default web browser.
+2- add the line **"google": "https://www.google.com/"** to our *conf_files/action_map.json* file.<br/>
+Which means that for every time our skill receives the action named google, the skill will then open https://www.google.com/ in our default web browser.
 
 ### Log files
 If you followed this guide correctly, there are 3 logs avaialabe for your use. In the case of something not working properly, you can check this logs and find out how to fix it. These logs are at the server side, which means they only work as long as the request succesfully arrived from the alexa servers to your server. If something went wrong with the skill interface you will not see anything helpfull in these log files, in this case you will have to check your alexa app for any cards or try testing it with Test tab in the alexa developer portal to see what went wrong.</br>
