@@ -66,7 +66,7 @@ The Alexa Skill Kit for Java handles all of those requirements for us. You can r
 
 The skill interface needs to be configured with your modem ip address as an Https Endpoint,<br/>
 So, if you don't want to update the skill interface with the new ip address of your modem every time your isp changes it,<br/>
-Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in NOIP's servers.
+Then I would recommend using a dynamic dns service in the sorts of NOIP and use the updates app to update your modem address in NOIP's servers. Besides easying the access to your computer, a dns name is included in the requierd certificate, which means that if you don't use a static name, not only will you have to update you skill interface with the new ip, you'll also gonna have to update your certificate both on the server side and on the client side.
 
 The skill's invocation word is Computer, but you can use whatever invocation word or phrase you want,<br/>
 Just remember that it's supposed to intuitive and that alexa needs to understand you.
@@ -85,7 +85,7 @@ In this section I'll try to elaborate as much as I can,<br/>
 If you're familliar with some of the actions described here, feel free to jump to next part.
 #### Prerequisites
 ##### Getting a static dns name from NOIP
-Create an account with https://www.noip.com/ and set up a hostname to be used as a static name to access our web server.<br/>
+Create an account with https://www.noip.com/ and set up a hostname to be used as a static dns name to access our web server.<br/>
 Download and install NOIPs DNS Update Client (DUC) [here](https://www.noip.com/download?page=win), this softwere allows you to update the ip address received from your isp periodicly.<br/>
 Write down your chosen dns name, we will use it very soon.
 
