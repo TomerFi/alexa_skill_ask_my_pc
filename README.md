@@ -237,7 +237,7 @@ I just want to recommend that you will comment out any other connectors that mig
 Uncommenting is just a recommendation, this it not a "must do" step, if you're unsure, it's better to skip this part then to damage the xml syntax. 
 
 ##### Configuring Tomcat default host name
-This is not a must do step, you can skip it and it will not effect the skill activity at all.</br>
+This is not a "must do" step, you can skip it and it will not effect the skill activity at all.</br>
 Nevertheless, I would recommend doing it for better log records.</br>
 Look inside the *server.xml* for and *Engine* tag and edit the *defaultHost* property, instead of *localhost* type the dns name you've created with NOIP.
 
@@ -254,7 +254,7 @@ Our servlet class qualified name *askmypc.AskMyPcServlet*, while *askmypc* is th
 After referencing our servelt, we need to map our desired url pattern to it. Again, the url pattern can be what ever you want. For now, our url pattern will be */askmypc*. We need to map our url pattern to the reference name of our servlet class.</br>
 
 Go to your tomcat folder, and open the subfolder webapps, ROOT, WEB-INF. Open the file *web.xml* and find the tag *web-app*.</br>
-Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) I've added to this project.</br>
+Inside the *web-app* tag add the content from the file [*servlet_mapping.xml*](servlet_mapping.xml) file I've added to this project.</br>
 If you want to change the url pattern before copying the content, you can, just **write down** your selected pattern for later use.</br>
 Once you're done, you may not have a working skill yet, but you do have an endpoint url for it.
 
