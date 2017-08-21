@@ -38,6 +38,7 @@ Please follow this guide as closely as you can to insure a working skill, I woul
   - [Example 1: Alexa ask computer to start excel](#example-1-alexa-ask-computer-to-start-excel)
   - [Example 2: Alexa ask computer to open google](#example-2-alexa-ask-computer-to-open-google)
 - [Log files](#log-files)
+- [Summary](#summary)
 
 ### Release of liability
 This is not an official guide, I just wrote about what I did to make this skill work, so other people who want to can do the same.</br>
