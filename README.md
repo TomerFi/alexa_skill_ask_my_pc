@@ -191,13 +191,13 @@ If you got to this point of the guide, you now have:
 - A fully configured Maven distribution that will allow you to package your project.
 - A (not yet configured) Tomcat distribution that will act as your web server and process all incoming requests.
 - A self-signed x509 public certificate that will help alexa's servers identify your web server (*certificate.pem*).
-- A Java Truststore file which holds your certificate in it and will be accessed with your selected password by your web server (*keystore.jks*).
+- A Java Truststore file which holds your certificate in it and will be accessed with your selected password by your web server (*keystore.jks*) in order to present your certificate upon all incoming requests.
 
 If only some or none of the above sounds familiar to you, you might want to go back to the appropriate section before continuing to configuring section.
 
 #### Configuring
 ##### Assigning a static ip for our computer
-The first thing we'll have to do is giving our computer a permanent ip so that we can direct all incoming requests with the port 443 to it.</br>
+The first thing we'll have to do is give our computer a permanent ip so that we can direct all incoming requests with the port 443 to it.</br>
 This part you're going to have to on your own, because I can tell you how to do it if you use a TP-Link AC1750 router, which is what I'm using.<br/>
 But if you use a diffrent router, well... you're going to have to do this part on your own.<br/>
 But don't worry, I'll give you the guidelines.<br/>
