@@ -170,7 +170,7 @@ This will create a public certificate called *certificate.pem* inside the *bin* 
 We need to create a truststore and import our certificate into it so that it can be accessed by our Tomcat web server. This will be accomplished using the *Java keytool* which is included in our *JDK* installation and the *openSSL* tool we used to create the certificate. We'll follow [Oracle's guide](https://docs.oracle.com/cd/E35976_01/server.740/es_admin/src/tadm_ssl_convert_pem_to_jks.html).</br>
 
 The first thing we need to do is convert the created *certificate.pem* file into a *.pkcs12* which is acceptable by the standarts of the java truststore. Open a Command Prompt windows **with administrative privileges** (right click, run as administrator) and navigate to the *bin* folder inside you *openSSL* distribution which for now also holds the private-key, configuration file and certificate we created in the prior section, type:</br>
-*openssl pkcs12 -export -out certificate.pkcs12 -in certificate.pem*</br>
+*openssl pkcs12 -export -out certificate.pkcs12 -inkey private-key.pem -in certificate.pem*</br>
 This will generate a *certificate.pkcs12* file in openssl's bin subfolder. This will be the certificate presented by our web server, to accomplished that we will need to create a Java Truststore (jks file) and import and *certificate.pkcs12* into it.</br>
 
 Navigate windows explorer to *%java_home%\bin* (start --> run) and move the created *certificate.pkcs12* into it. At this point I advice you to move the other three files from openssl's bin folder (private-key, configuration, certificate) to a secure folder accessible only to you.</br>
