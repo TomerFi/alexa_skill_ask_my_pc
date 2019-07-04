@@ -1,4 +1,15 @@
-# Alexa skill ask my pc<hr>
+# Alexa skill ask my pc</br>![Maintenance](https://img.shields.io/maintenance/no/2018.svg)
+
+**NOT MAINTAINED!**
+
+I'm no longer maintaining this repository!</br>
+It's been deprecated in favour of [this solution](https://github.com/TomerFi/smathhome_computer_mqtt_client).
+
+You can still use the files :point_up:, if you want.</br>
+These :point_down: are the instructions.
+
+__________________________________________
+
 Alexa custom skill written in java for opening files and web pages on a local computer running the skill as a web service with tomcat.
 You can check out the skill in action on my youtube channel [here](https://youtu.be/UMA1FSwb1pw).</br>
 
